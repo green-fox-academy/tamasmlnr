@@ -1,5 +1,5 @@
+[I'm an inline-style link](https://www.google.com)
 
-[Git lesson 
-repository] (https://github.com/tamasmlnr/git-lesson-repository)
-[Hello world repository] (https://github.com/tamasmlnr/hello-world)
-[Patchwork repository] (https://github.com/tamasmlnr/patchwork)
+[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
+
+[I'm a reference-style link][Arbitrary case-insensitive reference text]
