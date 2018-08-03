@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/teapot-expression-control-flow.iml" filepath="$PROJECT_DIR$/teapot-expression-control-flow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/teapot-expression-control-flow.iml" filepath="$PROJECT_DIR$/.idea/teapot-expression-control-flow.iml" />
     </modules>
   </component>
 </project>
