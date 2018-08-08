@@ -19,7 +19,7 @@ public class EnvelopeStar {
     int wPiece = WIDTH / lineNum;
     //first quarter
     for (int x = 0; x <= hWidth; x += wPiece) {
-      for (int y = hHeight + hHeight; y >= hPiece; y -= hPiece) {
+      for (int y = HEIGHT; y >= hPiece; y -= hPiece) {
         graphics.drawLine(x, hHeight, hWidth, hHeight - x);
       }
     }
