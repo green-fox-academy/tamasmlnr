@@ -14,8 +14,6 @@ public class ColoredBox {
     graphics.drawLine(200, 200, 100, 200);
     graphics.setColor(Color.ORANGE);
     graphics.drawLine(100, 200, 100, 100);
-
-
   }
 
   // Don't touch the code below
