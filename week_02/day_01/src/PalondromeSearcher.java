@@ -16,9 +16,10 @@ public class PalondromeSearcher {
     for (int c = 0; c < word.length(); c++) {
       for (int i = 1; i <= word.length() - c; i++) {
         String sub = word.substring(c, c + i);
-        System.out.print(c+" ");
-        System.out.println(i);
-        System.out.println(sub);
+//        comment below would print out all substrings and their positions to help understand the process
+//        System.out.print(c+" ");
+//        System.out.println(i);
+//        System.out.println(sub);
         // i know i should write two separate methods for this but it's 23:30 and i can't be bothered
         if (sub.length() >= 3 && sub.equals(reverseWord(sub))) System.out.println(sub);
 
