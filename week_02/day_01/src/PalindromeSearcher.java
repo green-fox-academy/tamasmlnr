@@ -3,7 +3,7 @@ import java.util.Scanner;
 //To check all palindromes within a string, this program generates all substrings
 // and prints them if they are equal to their reversed substrings.
 
-public class PalondromeSearcher {
+public class PalindromeSearcher {
 
   public static void main(String[] args) {
     Scanner reader = new Scanner(System.in);
@@ -20,11 +20,15 @@ public class PalondromeSearcher {
 //        System.out.print(c+" ");
 //        System.out.println(i);
 //        System.out.println(sub);
-        // i know i should write two separate methods for this but it's 23:30 and i can't be bothered
-        if (sub.length() >= 3 && sub.equals(reverseWord(sub))) System.out.println(sub);
-
+       printIfPalindrome(sub);
       }
     }
+  }
+
+
+  public static void printIfPalindrome(String sub) {
+    if (sub.length() >= 3 && sub.equals(reverseWord(sub))) System.out.println(sub);
+
   }
 
 
@@ -35,7 +39,6 @@ public class PalondromeSearcher {
     }
     return reversed;
   }
-}
 
 
 //I'll just leave this here for the future me to laugh at how bad I was
@@ -56,24 +59,25 @@ public class PalondromeSearcher {
 //        returnPalindrome="";      } }}}}
 //
 
-//Even earlier attempt - this almost worked
-//public static void isPalindrome(ArrayList<Character> letters) {
-//  String returnPalindrome="";
-//  boolean palindrome=false;
-//  for (int x=1;x<letters.size(); x++){
-//    for (int i=x; i<letters.size()-x;i++)
-//    {
-//      if(letters.get(i-x)==letters.get(i+x)) {
-//        for(int y=1;y<=x;y++) {
-//          returnPalindrome += letters.get(i - y);
-//          returnPalindrome += letters.get(i);
-//          returnPalindrome += letters.get(i + y);
-//          System.out.println(returnPalindrome);
-//          returnPalindrome="";
+  //Even earlier attempt - this almost worked
+//  public static void isaPalindrome(ArrayList<Character> letters) {
+//    String returnPalindrome = "";
+//    boolean palindrome = false;
+//    for (int x = 1; x < letters.size(); x++) {
+//      for (int i = x; i < letters.size() - x; i++) {
+//        if (letters.get(i - x) == letters.get(i + x)) {
+//          for (int y = 1; y <= x; y++) {
+//            returnPalindrome += letters.get(i - y);
+//            returnPalindrome += letters.get(i);
+//            returnPalindrome += letters.get(i + y);
+//            System.out.println(returnPalindrome);
+//            returnPalindrome = "";
+//          }
 //        }
 //      }
-//    }}
+//    }
 //
 //}
 //}
 //
+  }
