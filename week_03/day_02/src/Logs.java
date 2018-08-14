@@ -1,8 +1,12 @@
+import com.sun.deploy.util.StringUtils;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Logs {
@@ -13,22 +17,47 @@ public class Logs {
   public static void main(String[] args) {
     Path path = Paths.get("log.txt");
     try {
-      uniqueIp(path);
+      List<String> content = Files.readAllLines(path);
+      uniqueIp(content);
+      System.out.println(postGetRatio(content));
+
+
     } catch (IOException e) {
       e.printStackTrace();
     }
-
   }
 
-  private static void uniqueIp(Path path) throws IOException {
-    String[] ip=new String[100];
-    List<String> content = Files.readAllLines(path);
-    for (int i=0;i<content.size();i++)
-      for (int j=0;j<content.size();j++){
-        ip=content.get(i).split("8  ");
+  private static double postGetRatio(List<String> content) {
+    int getCount = 0;
+    int postCount = 0;
+    for (String line : content) {
+      if (line.contains("POST")) {
+        postCount++;
+      }
+      if (line.contains("GET")) {
+
+        getCount++;
+      }
+
     }
-
-
+    return (double) getCount / (double) postCount;
   }
+
+  private static List<String> uniqueIp(List<String> inList) throws IOException {
+    ArrayList<String> ip = new ArrayList();
+    for (String line : inList) {
+      ip.add(line.substring(27, 38));
+    }
+    Collections.sort(ip);
+    List<String> uniqueIp = new ArrayList();
+    for (int i = 0; i < ip.size(); i++)
+      if (!uniqueIp.contains(ip.get(i))) {
+        uniqueIp.add(ip.get(i));
+      }
+    return uniqueIp;
+  }
+
 
 }
+
+
