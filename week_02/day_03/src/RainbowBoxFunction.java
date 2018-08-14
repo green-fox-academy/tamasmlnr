@@ -9,22 +9,19 @@ public class RainbowBoxFunction {
   public static void mainDraw(Graphics graphics) {
 
     Scanner reader = new Scanner(System.in);
-    System.out.println("Enter the square size and the rgb integer value:");
-    {
-      int x = Integer.parseInt(reader.nextLine());
-      int color = Integer.parseInt(reader.nextLine());
-      drawRect(x, color, graphics);
+
+
+      drawRect(50, 1191037, graphics);
       System.out.println("Press Y if you are ready to party");
       String y = reader.nextLine();
       if (y.equals("y"))
+        //fills the canvas with random colored boxes
         for (int i = 0; i < 3000; i++) {
           {
-            drawMany(x, graphics);
+            drawMany(30, graphics);
           }
         }
       else System.out.println("Boring!");
-    }
-    System.out.println("Thank you!");
   }
 
   public static void drawRect(int x, int color, Graphics graphics) {

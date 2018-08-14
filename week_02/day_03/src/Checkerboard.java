@@ -11,8 +11,6 @@ public class Checkerboard {
       for (int i = 0; i < 500; i += 100) {
         graphics.setColor(Color.BLACK);
         graphics.fillRect(x, i, 50, 50);
-        System.out.println(x);
-        System.out.println(i);
       }
     }
 
@@ -20,8 +18,6 @@ public class Checkerboard {
       for (int i = 50; i < 500; i += 100) {
         graphics.setColor(Color.BLACK);
         graphics.fillRect(z, i, 50, 50);
-        System.out.println(z);
-        System.out.println(i);
       }
 
 
