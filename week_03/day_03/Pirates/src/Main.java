@@ -1,17 +1,9 @@
 public class Main {
 
   public static void main(String[] args) {
-    Pirate jack = new Pirate();
-    jack.drinkSomeRum();
-    jack.drinkSomeRum();
-    jack.drinkSomeRum();
-    jack.drinkSomeRum();
-    jack.howsItGoingMate();
-    jack.drinkSomeRum();
-    jack.drinkSomeRum();
-    jack.howsItGoingMate();
-    jack.die();
-    jack.drinkSomeRum();
-    jack.howsItGoingMate();
+    Ship shipFace = new Ship();
+    Ship shippy = new Ship();
+    System.out.println(shipFace);
+    System.out.println(shipFace);
   }
 }

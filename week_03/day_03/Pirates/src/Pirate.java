@@ -1,14 +1,25 @@
 public class Pirate {
   int intox;
   int rumMeter;
-  boolean isDead=false;
+  boolean isDead = false;
   boolean hasParrot;
+  boolean passedOut;
 
   public Pirate() {
     this.intox = 0;
     this.rumMeter = 0;
     this.isDead = false;
     this.hasParrot = true;
+    this.passedOut = false;
+  }
+
+  public String status() {
+    if (isDead) {
+      return "is dead";
+    }
+    if (passedOut) {
+      return "is passed out";
+    } else return "is OK";
   }
 
   public void drinkSomeRum() {
@@ -26,10 +37,15 @@ public class Pirate {
         System.out.println("Pour me anudder!");
       } else {
         System.out.println("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
-        this.intox = 0;
-        this.rumMeter = 0;
+        passOut();
       }
     }
+  }
+
+  public void passOut() {
+    passedOut = true;
+    this.intox = 0;
+    this.rumMeter = 0;
   }
 
   public void die() {
