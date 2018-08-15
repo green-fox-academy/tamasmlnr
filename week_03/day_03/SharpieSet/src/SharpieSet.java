@@ -4,7 +4,7 @@ import java.util.List;
 
 public class SharpieSet {
 
-  ArrayList<Sharpie> sharpies= new ArrayList<>();
+  ArrayList<Sharpie> sharpies = new ArrayList<>();
 
   public SharpieSet() {
     this.sharpies = sharpies;
@@ -15,24 +15,24 @@ public class SharpieSet {
   }
 
   public int countUsable() {
-    int usable=0;
-    for (Sharpie sharpie: sharpies) {
-      if (sharpie.inkAmount>0) usable++;
+    int usable = 0;
+    for (Sharpie sharpie : sharpies) {
+      if (sharpie.inkAmount > 0) usable++;
     }
     return usable;
   }
 
   public void removeTrash() {
-    for (Iterator<Sharpie> iterator = sharpies.iterator(); iterator.hasNext();) {
-      Sharpie sharpie= iterator.next();
-      if(sharpie.getInkAmount() == 0) {
+    for (Iterator<Sharpie> iterator = sharpies.iterator(); iterator.hasNext(); ) {
+      Sharpie sharpie = iterator.next();
+      if (sharpie.getInkAmount() == 0) {
         iterator.remove();
       }
     }
   }
 
   public void printSize() {
-    System.out.println("Usable:" +sharpies.size());
+    System.out.println("Usable:" + sharpies.size());
   }
 
 }
