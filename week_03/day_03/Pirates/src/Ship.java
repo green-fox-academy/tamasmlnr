@@ -22,36 +22,40 @@ public class Ship {
 
 
   public String toString() {
-    String status = "The captain " + captain.status() + " and drunk " + captain.rumMeter + " rums.\n";
+    String status = "The captain " + captain.status() + " and drank " + captain.rumMeter + " rums.\n";
     status += "The ship has a crew of " + crew.size() + " seadogs.";
     return status;
   }
 
   public int score() {
     int score = crew.size() - captain.rumMeter;
+
     return score;
   }
 
   public void lose() {
-    for (int i=0;i<(int)(Math.random()*crew.size());i++);
-    crew.remove(crew.get((int)(Math.random()*crew.size())));
+    System.out.println("szam:" + (int) (Math.random() * crew.size()));
+    System.out.println("szam2:"+crew.get((int) (Math.random() * crew.size())));
+    for (int i = 0; i < (int) (Math.random() * crew.size()); i++){
+    crew.remove(crew.get((int) (Math.random() * crew.size())));}
   }
 
   public void party() {
-    for (int i=0;i<(int)(Math.random()*crew.size());i++);
-    crew.get((int)(Math.random()*crew.size())).drinkSomeRum();
+    for (int i = 0; i < (int) (Math.random() * crew.size()); i++){
+    crew.get((int) (Math.random() * crew.size())).drinkSomeRum()}
   }
 
   public boolean battle(Ship ship) {
     if (this.score() > ship.score()) {
-  party();
+      party();
+      ship.lose();
       return true;
-    }lose();
-
+    }
+    ship.party();
+    lose();
     return false;
 
   }
-
 
 
 }
