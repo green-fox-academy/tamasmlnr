@@ -12,8 +12,7 @@ public class Carpet {
   }
 
   public static void fractalFunction(Graphics g, int x, int y, int size) {
-//    g.setColor((new Color((int) (Math.random() * 16777215))));
-    g.setColor((Color.black));
+    g.setColor((new Color((int) (Math.random() * 16777215))));
     g.fillRect(x, y, size, size);
     if (size > 5) {
       fractalFunction(g, x-(size*2/3), y+size/3, size /3);
