@@ -1,16 +1,22 @@
 public class WarApp {
    public static void main(String[] args) {
-      Ship shipFace = new Ship();
-      Ship shippy = new Ship();
-      System.out.println(shipFace);
-      System.out.println(shippy);
-      shipFace.battle(shippy);
+      Armada firstArmada= new Armada();
+      Armada secondArmada= new Armada();
 
-      System.out.println(shipFace);
-      System.out.println(shippy);
+     System.out.println("First armada:");
+     System.out.println(firstArmada);
+     System.out.println("Second armada:");
+     System.out.println(secondArmada);
+     System.out.println("Battle!");
+      firstArmada.war(secondArmada);
+
+     System.out.println("First armada:");
+      System.out.println(firstArmada);
+     System.out.println("Second ship:");
+      System.out.println(secondArmada);
     }
   }
 
 
 
-}
+

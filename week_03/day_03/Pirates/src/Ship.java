@@ -33,11 +33,13 @@ public class Ship {
     return score;
   }
 
-  public void lose() {
+  public boolean lose() {
 
     for (int i = 0; i < (int) (Math.random() * crew.size()); i++) {
-      crew.remove(crew.get((int) (Math.random() * crew.size())));
+
+      return true;
     }
+    return false;
   }
 
   public void party() {
