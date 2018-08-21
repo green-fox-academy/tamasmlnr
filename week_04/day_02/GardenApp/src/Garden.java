@@ -15,6 +15,16 @@ public class Garden {
     return plants.size();
   }
 
+  public int gardenDrySize() {
+    int drySize = 0;
+    for (Plant plant : plants) {
+      if (plant.waterLevel <= plant.dryLevel) {
+        drySize++;
+      }
+    }
+    return drySize;
+  }
+
   public void getStatus() {
     for (Plant plant : plants) {
       if (plant instanceof Flower) {
@@ -28,9 +38,11 @@ public class Garden {
   }
 
   public void water(int howMuchWater) {
+    int dry = gardenDrySize();
     System.out.println("Watering with " + howMuchWater);
     for (Plant plant : plants) {
-      plant.waterPlant((double) howMuchWater / gardenSize() * plant.getAbsorption());
+      if (plant.waterLevel <= plant.dryLevel)
+        plant.waterPlant((double) howMuchWater / dry * plant.getAbsorption());
     }
   }
 }
