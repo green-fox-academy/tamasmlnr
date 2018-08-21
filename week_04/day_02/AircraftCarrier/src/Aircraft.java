@@ -9,12 +9,14 @@ public class Aircraft {
     this.damage = damage;
     this.maxAmmo = maxAmmo;
     this.ammo = 0;
-    if (type=="F16") {
-      this.type="F16";}
-    if (type=="F35") {
-      this.type="F35";}
-      this.isPriority=isPriority;
+    if (type == "F16") {
+      this.type = "F16";
     }
+    if (type == "F35") {
+      this.type = "F35";
+    }
+    this.isPriority = isPriority;
+  }
 
 
   public Aircraft() {
@@ -27,16 +29,29 @@ public class Aircraft {
   }
 
   public int refill(int refillAmount) {
-    int refillLeft = refillAmount - ammo;
+    int refillLeft = refillAmount - maxAmmo;
     ammo = maxAmmo;
     return refillLeft;
+
   }
 
   public String getType() {
     return type;
   }
 
+  public int getMaxAmmo() {
+    return maxAmmo;
+  }
+
+  public boolean isPriority() {
+    return isPriority;
+  }
+
+  public int totalDamage() {
+    return this.ammo * this.damage;
+  }
+
   public String getStatus() {
-    return "Type " +this.type + ", Ammo " +this.ammo + ", Base damage: "+this.damage +", All damage:" +ammo*damage;
+    return "Type " + this.type + ", Ammo " + this.ammo + ", Base damage: " + this.damage + ", All damage:" + totalDamage();
   }
 }
