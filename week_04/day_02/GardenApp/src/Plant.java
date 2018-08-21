@@ -1,5 +1,5 @@
 public class Plant {
-  int waterLevel;
+  double waterLevel;
   String color;
   boolean needsWatering;
 
@@ -12,13 +12,13 @@ public class Plant {
     return needsWatering;
   }
 
-  public int getWaterLevel() {
+  public double getWaterLevel() {
     return waterLevel;
   }
 
 
-  public void waterPlants(Garden garden, int waterLevel) {
-    waterLevel += waterLevel / garden.gardenSize();
+  public void waterPlant(double waterLevel) {
+    this.waterLevel += waterLevel;
   }
 
   public void needsWater() {

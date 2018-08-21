@@ -19,14 +19,25 @@ public class Garden {
     for (Plant plant : plants) {
 
       if (plant instanceof Flower) {
-        ((Flower) plant).getStatus();}
-        if (plant instanceof Tree) {
-          ((Tree) plant).getStatus();}
-
-        System.out.println(plant.getWaterLevel());
+        ((Flower) plant).getStatus();
       }
+      if (plant instanceof Tree) {
+        ((Tree) plant).getStatus();
+      }
+
+      System.out.println("water level: "+plant.getWaterLevel());
     }
-
-
   }
+
+  public void water(int howMuchWater) {
+    System.out.println("Watering with "+howMuchWater);
+    for (Plant plant : plants) {
+      if(plant instanceof Flower)
+      plant.waterPlant((double)howMuchWater / gardenSize()*0.75);
+      if(plant instanceof Tree)
+        plant.waterPlant((double)howMuchWater / gardenSize()*0.4);
+    }
+  }
+
+}
 
