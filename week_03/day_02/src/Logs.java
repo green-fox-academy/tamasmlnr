@@ -20,8 +20,6 @@ public class Logs {
       List<String> content = Files.readAllLines(path);
       uniqueIp(content);
       System.out.println(postGetRatio(content));
-
-
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -35,7 +33,6 @@ public class Logs {
         postCount++;
       }
       if (line.contains("GET")) {
-
         getCount++;
       }
 
@@ -56,8 +53,6 @@ public class Logs {
       }
     return uniqueIp;
   }
-
-
 }
 
 
