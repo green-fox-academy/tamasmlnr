@@ -33,6 +33,5 @@ public class Garden {
       plant.waterPlant((double) howMuchWater / gardenSize() * plant.getAbsorption());
     }
   }
-
 }
 

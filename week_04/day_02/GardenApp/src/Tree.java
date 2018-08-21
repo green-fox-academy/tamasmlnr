@@ -1,19 +1,10 @@
 public class Tree extends Plant {
   String color;
-  double absorption;
 
   public Tree(String color) {
     super(color);
-  }
-
-  public void needsWater() {
-    super.needsWater();
-    if (waterLevel <= 10) needsWatering = true;
-    this.absorption=0.4;
-  }
-
-  public double getAbsorption() {
-    return absorption;
+    this.dryLevel = 10;
+    this.absorption = 0.4;
   }
 
   public void getStatus() {
@@ -21,6 +12,4 @@ public class Tree extends Plant {
     if (needsWatering) System.out.println(super.color + " tree needs watering!");
     else System.out.println(super.color + " tree does not need watering.");
   }
-
-
 }

@@ -3,11 +3,11 @@ public class Plant {
   String color;
   boolean needsWatering;
   double absorption;
+  double dryLevel;
 
   public Plant(String color) {
     waterLevel = 0;
     this.color = color;
-    this.absorption = 1.0;
   }
 
   public boolean needsWatering() {
@@ -27,7 +27,9 @@ public class Plant {
   }
 
   public void needsWater() {
-    this.needsWatering = false;
+    if (this.dryLevel >= this.waterLevel)
+      this.needsWatering = true;
+    else this.needsWatering = false;
   }
 
   public String getColor() {

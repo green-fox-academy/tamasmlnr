@@ -1,19 +1,10 @@
 public class Flower extends Plant {
   String color;
-  double absorbtion;
 
-  public Flower(String color){
+  public Flower(String color) {
     super(color);
-    this.absorbtion=0.75;
-  }
-
-  public double getAbsorption() {
-    return absorbtion;
-  }
-
-  public void needsWater() {
-    super.needsWater();
-    if(waterLevel<=5) needsWatering=true;
+    this.absorption = 0.75;
+    this.dryLevel = 5.0;
   }
 
   public void getStatus() {
@@ -21,6 +12,4 @@ public class Flower extends Plant {
     if (needsWatering) System.out.println(super.color + " flower needs watering!");
     else System.out.println(super.color + " flower does not need watering.");
   }
-
-
 }
