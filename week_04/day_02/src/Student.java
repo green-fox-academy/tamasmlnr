@@ -24,4 +24,8 @@ public class Student extends Person {
     System.out.println( "Hi, i'm " +getName() +", a " + getAge()+" year old " +getGender()+" from " +previousOrganization +" who skipped " +skippedDays +" days.") ;
   }
 
+  public void skipDays(int skip) {
+    this.skippedDays+=skip;
+  }
+
 }
