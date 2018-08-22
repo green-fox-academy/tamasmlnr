@@ -24,8 +24,8 @@ public class Student extends Person implements Cloneable {
     System.out.println("Hi, i'm " + getName() + ", a " + getAge() + " year old " + getGender() + " from " + previousOrganization + " who skipped " + skippedDays + " days.");
   }
 
-  protected Object clone() throws CloneNotSupportedException {
-    return super.clone();
+  public Student clone() throws CloneNotSupportedException {
+    return (Student)super.clone();
   }
 
   public void skipDays(int skip) {
