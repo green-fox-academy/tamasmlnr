@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Domino implements Comparable{
+public class Domino implements Comparable {
   private final int[] values;
 
   public Domino(int valueA, int valueB) {
@@ -24,8 +24,8 @@ public class Domino implements Comparable{
   //does not work yet
   @Override
   public int compareTo(Object o) {
-    if(this.getValues()[0]-((Domino)o).getValues()[0]!=0)
-    return this.getValues()[0]-((Domino)o).getValues()[0];
-    else return this.getValues()[1]-((Domino)o).getValues()[1];
+    int d = this.getValues()[0] - ((Domino) o).getValues()[0];
+    if (d != 0) return d;
+    else return this.getValues()[1] - ((Domino) o).getValues()[1];
   }
 }
