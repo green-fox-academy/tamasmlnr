@@ -20,8 +20,6 @@ public class Domino implements Comparable {
     return "[" + values[0] + ", " + values[1] + "]";
   }
 
-
-  //does not work yet
   @Override
   public int compareTo(Object o) {
     int d = this.getValues()[0] - ((Domino) o).getValues()[0];
