@@ -11,6 +11,10 @@ public class Domino implements Comparable{
     return values;
   }
 
+  public int valueOne() {
+    return values[0];
+  }
+
   @Override
   public String toString() {
     return "[" + values[0] + ", " + values[1] + "]";
@@ -20,7 +24,8 @@ public class Domino implements Comparable{
   //does not work yet
   @Override
   public int compareTo(Object o) {
-    int i=getValues()[0];
-    return this.getValues().compareTo(o.getValues());
+    if(this.getValues()[0]-((Domino)o).getValues()[0]!=0)
+    return this.getValues()[0]-((Domino)o).getValues()[0];
+    else return this.getValues()[1]-((Domino)o).getValues()[1];
   }
 }
