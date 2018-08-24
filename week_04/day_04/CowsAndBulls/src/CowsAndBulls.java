@@ -6,8 +6,8 @@ public class CowsAndBulls {
   private Random random = new Random();
   private int[] toBeGuessed = new int[4];
   private int counter = 0;
-  private String numAsString="";
-  Scanner reader;
+  private String numAsString = "";
+  boolean inProgress = true;
   private ArrayList<String> CowBull;
 
   public CowsAndBulls() {
@@ -37,6 +37,7 @@ public class CowsAndBulls {
 
   public void fin() {
     System.out.println("The number was " + numAsString + ".");
+    boolean inProgress = false;
     if (CowBull.contains("Bull")) System.out.println("You lose!");
     else System.out.println("You win!");
 
@@ -50,7 +51,7 @@ public class CowsAndBulls {
   public void generateNum() {
     for (int i = 0; i < 4; i++) {
       toBeGuessed[i] = random.nextInt(9);
-      numAsString+=toBeGuessed[i];
+      numAsString += toBeGuessed[i];
     }
   }
 
