@@ -1,5 +1,6 @@
 Repositories for the Green Fox Academy course
 
+[Wanderer](https://github.com/tamasmlnr/wanderer-java "Wanderer")
 
 [ToDo app](https://github.com/tamasmlnr/todo-app "ToDo app repo")
 
