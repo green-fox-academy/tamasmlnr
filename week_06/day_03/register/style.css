@@ -1,0 +1,118 @@
+body {
+  background-color: #DDDDDD;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1 {
+  font-weight: normal;
+  padding-bottom: 20px;
+  margin: 0px;
+  font-size: 250%;
+}
+#box {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 380px;
+  background-color: #fff;
+  display:block;
+  padding-bottom: 30px;
+  box-shadow: 2px 3px #888888;
+}
+#left {
+  width: 30%;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 12px;
+  margin-top: 18px;
+  float:left;
+}
+
+#box #circlewrap {
+  position: relative;
+  width:20%;
+  height:150%;
+  float:left;
+  margin-top: 170px;
+}
+#circlewrap #circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #333333;
+    line-height: 50px;
+    text-align: center;
+    margin: auto;
+  background:#DDDDDD;
+}
+
+#fb, #tw, #go {
+  background: #32508E;
+  color: #fff;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;
+  font-size: 120%;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+#tw {
+  background: #55ACEE;
+}
+
+#go {
+  background: #DD4B39;
+}
+
+#right {
+  float:right;
+  width: 30%;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 12px;
+  margin-top: 125px;
+}
+
+input {
+  width: 100%;
+  border: none;
+  border-bottom:  1px solid #c3c3c3;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+
+input:focus {
+  outline: none !important; 
+  border-bottom: 2px solid #16A085;
+ }
+
+
+ #box #pwRemind, #pwRemind a {  font-size: 2px;
+   height: 20px;
+   text-transform: none;
+  text-align: right;
+  font-size: 10px;
+  color:black;
+  text-decoration: none;
+}
+
+button, button a {
+  margin-top: 20px;
+  font-size: 14px;
+  background-color: #333333;
+  text-transform: none;
+  border: none;
+  width: 70%;
+  height: 40px;
+  background-color: #16A085;
+  color:#fff;
+  font-weight: bold;
+}
