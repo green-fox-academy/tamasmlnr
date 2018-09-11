@@ -6,7 +6,7 @@ body {
 
 h1 {
   font-weight: normal;
-  padding: 10% 0 0 10%;
+  padding: 10% 0 0 15%;
   margin: 0px;
 }
 #box {
@@ -16,21 +16,31 @@ h1 {
   right: 0;
   bottom: 0;
   left: 0;
-  width: 400px;
-  height: 350px;
+  width: 450px;
+  height: 380px;
   background-color: #fff;
   display:block;
+  padding-bottom: 30px;
 }
 #box div {
-  margin-left: 10%;
-  margin-right: 10%;
+  padding-left: 15%;
+  padding-right: 15%;
+  font-size: 12px;
+  margin-top: 18px;
 }
 
 input {
   width: 100%;
   border-radius: 2px;
-  border: 1px solid black;
-  height: 30px;
+  border: 1px solid #c3c3c3;
+  height: 40px;
+  margin-top: 10px;
+}
+
+input[type="password"] {
+  background: url(eye.png) no-repeat;
+  background-size: 5%;
+  background-position: 280px;
 }
 
 input:focus {
@@ -39,13 +49,23 @@ input:focus {
  }
 
 
-button {
+ #box #pwRemind, #pwRemind a {  font-size: 2px;
+   height: 20px;
+   text-transform: none;
+  text-align: right;
+  font-size: 10px;
+  color:black;
+  text-decoration: none;
+}
+
+button, button a {
+  font-size: 11px;
   background-color: #333333;
   text-transform: none;
   border: none;
   border-radius: 30px;
-  width: 90px;
-  height: 30px;
+  width: 100px;
+  height: 40px;
   color: #fff;
   font-weight: bold;
 }
