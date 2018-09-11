@@ -2,27 +2,28 @@
 
 <head>
   <title>Register</title>
-
   <link rel="stylesheet" href="style.css"></link>
 </head>
 
-<div>
-    <form id="email" action="https://www.heroku.com/newsletter_signups" method="post">
-  <label for="name">Name</label>
-  <br>
-  <input autofocus="autofocus" type="name" id="name" name="user_name" required="required"></input>
-</div>
+<body>
+  <div>
+     <form id="email" action="https://www.heroku.com/newsletter_signups" method="post">
+    <label for="name">Name</label>
+    <br>
+    <input autofocus="autofocus" type="name" id="name" name="user_name" required="required"></input>
+  </div>
 
-<div>
-  <label for="email">Email</label>
-  <br>
+  <div>
+    <label for="email">Email</label>
+    <br>
+    <input type="email" name="newsletter_signup[email]" id="email" required="required">
+  </div>
 
-  <input type="email" name="newsletter_signup[email]" id="email" required="required">
-</div>
-
-<div>
-  <a href="#">
-    <button type="submit" formmethod="post">Login</button>
-  </a>
-</form>
-</div>
+  <div>
+    <a href="#">
+      <button type="submit" formmethod="post">Login</button>
+    </a>
+  </div>
+  </form>
+ 
+</body>
