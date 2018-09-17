@@ -5,10 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<p th:text="'Name: ' + ${name} "/>
-<p th:text="${#numbers.formatDecimal(balance,2,2)}+' Zebra'"></p>
-<p th:text="'Animal type:: ' + ${animal} "/>
 
+<span th:text="${text}"/><br>
+<span th:utext="${text}"/>
 
 
 </body>
