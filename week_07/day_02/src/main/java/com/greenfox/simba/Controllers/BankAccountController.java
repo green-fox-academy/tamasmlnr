@@ -7,20 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.List;
-
 @Controller
 public class BankAccountController {
-
-  BankAccount account = new BankAccount("Simba", 2000, "Lion", true, false);
-
 
   BankAccountList accountList = new BankAccountList();
 
   @RequestMapping("/list")
   public String showList(Model model) {
-
     BankAccount account = new BankAccount("Simba", 2000, "Lion", true, false);
     model.addAttribute("name", account.getName());
     model.addAttribute("balance", account.getBalance());
@@ -42,10 +35,8 @@ public class BankAccountController {
     return "accountlist";
   }
 
-
   @PostMapping("/donate")
   public String donate(@RequestParam String animalName) {
-
     accountList.getList()
         .stream()
         .filter(animal -> animal.getName()
@@ -53,7 +44,6 @@ public class BankAccountController {
         .forEach(animal -> animal.increaseAmount());
     return "redirect:/accountlist";
   }
-
 
   @PostMapping("/addaccount")
   public String addNewAccount(@ModelAttribute BankAccount newAccount) {

@@ -8,17 +8,14 @@
         body {
             font-family: 'Montserrat', sans-serif;
         }
-
         .red {
             color: darkorange;
             background-color: darkgoldenrod;
         }
-
         .image {
             height: 20%;
             padding-left: 5%;
         }
-
         #box {
             position: absolute;
             margin: auto;
@@ -32,9 +29,7 @@
             display: block;
             padding-bottom: 30px;
         }
-
         table {
-
             width: 100%;
             text-align: center;
             border: 1px solid black;
@@ -45,13 +40,10 @@
             text-align: center;
             margin: 0px auto;
         }
-
         #donation select, input {
             margin-top: 30px;
             font-family: 'Montserrat', sans-serif;
         }
-
-
     </style>
 </head>
 <body>
@@ -66,7 +58,6 @@
             <th>King</th>
         </tr>
         <tr th:each="account : ${accountList.getList()}" th:classappend="${account.isKing()} ? red : ''">
-
             <td th:text=" ${accountStat.index+1}"></td>
             <td th:text="${account.name}"></td>
             <td th:text="${account.balance}"></td>
@@ -76,7 +67,6 @@
             <td th:unless="${account.isKing()} == true"></td>
         </tr>
         <tr>
-
             <form action="#" th:action="@{addaccount}" method="POST">
                 <td><input type="submit" value="Add New Account"/></td>
                 <td><input type="text" th:field="${newAcc.name}"/></td>
@@ -94,9 +84,7 @@
                 </select></td>
             </form>
         </tr>
-
     </table>
-
     <div id="donation">
         <form action="#" th:action="@{donate}" method="POST">
             <label for="select"> Choose an Animal to donate to: </label>
@@ -108,7 +96,5 @@
         </form>
     </div>
 </div>
-
-
 </body>
 </html>
