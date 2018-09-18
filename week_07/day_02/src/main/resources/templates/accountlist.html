@@ -62,10 +62,10 @@
             <th>Name</th>
             <th>Balance</th>
             <th>Type</th>
-            <th>Good/Bad guy</th>
+            <th>Good guy</th>
             <th>King</th>
         </tr>
-        <tr th:each="account : ${accountList}" th:classappend="${account.isKing()} ? red : ''">
+        <tr th:each="account : ${accountList.getList()}" th:classappend="${account.isKing()} ? red : ''">
 
             <td th:text=" ${accountStat.index+1}"></td>
             <td th:text="${account.name}"></td>
@@ -74,15 +74,34 @@
             <td th:text="${account.isGoodGuy()} ? 'Good guy :)' : 'Bad guy :('"></td>
             <td th:if="${account.isKing()} == true"><img src="/images/crown.png" class="image"></td>
             <td th:unless="${account.isKing()} == true"></td>
-
         </tr>
+        <tr>
+
+            <form action="#" th:action="@{addaccount}" method="POST">
+                <td><input type="submit" value="Add New Account"/></td>
+                <td><input type="text" th:field="${newAcc.name}"/></td>
+                <td><input type="text" th:field="${newAcc.balance}"/></td>
+                <td><input type="text" th:field="${newAcc.animalType}"/></td>
+
+                <td><select id="goodGuy" name="goodGuy">
+                    <option th:value="true" th:text="true"></option>
+                    <option th:value="false" th:text="false"></option>
+                </select>
+                </td>
+                <td><select id="king" name="king">
+                    <option th:value="true" th:text="true"></option>
+                    <option th:value="false" th:text="false"></option>
+                </select></td>
+            </form>
+        </tr>
+
     </table>
 
     <div id="donation">
-        <form action="#" th:action="@{accountlist}" method="POST">
+        <form action="#" th:action="@{donate}" method="POST">
             <label for="select"> Choose an Animal to donate to: </label>
             <select id="select" name="animalName">
-                <option th:each="account : ${accountList}" th:value="${account.name}"
+                <option th:each="account : ${accountList.getList()}" th:value="${account.name}"
                         th:text="${account.name}"></option>
             </select>
             <input type="submit" value="Donate">

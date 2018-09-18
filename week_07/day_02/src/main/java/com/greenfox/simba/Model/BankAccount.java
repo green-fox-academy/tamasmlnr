@@ -10,12 +10,12 @@ public class BankAccount {
   private boolean isKing;
   private boolean isGoodGuy;
 
-  public BankAccount(String name, int balance, String animalType, boolean isGoodGuy) {
+  public BankAccount(String name, int balance, String animalType, boolean isGoodGuy, boolean isKing) {
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
-    this.isKing = false;
     this.isGoodGuy = isGoodGuy;
+    this.isKing = isKing;
   }
 
   public boolean isGoodGuy() {
@@ -29,9 +29,6 @@ public class BankAccount {
   public BankAccount() {
   }
 
-  public void makeKing() {
-    this.isKing = true;
-  }
 
   public boolean isKing() {
     return isKing;
