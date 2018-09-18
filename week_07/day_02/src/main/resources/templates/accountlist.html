@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bank account details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <style>
+        .red {
+            color: darkorange;
+            background-color: darkgoldenrod;
+        }
+
+        .image {
+            height: 20%;
+            padding-left: 35%;
+        }
+
+        table {
+            font-family: 'Montserrat', sans-serif;
+            width: 100%;
+            text-align: center;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+
+    </style>
+</head>
+<body>
+<!--<div id="box">-->
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>Type</th>
+        <th>Good/Bad guy</th>
+        <th>King</th>
+    </tr>
+    <tr th:each="account : ${accountList}" th:classappend="${account.isKing()} ? red : ''">
+
+        <td th:text=" ${accountStat.index+1}"></td>
+        <td th:text="${account.name}"></td>
+        <td th:text="${account.balance}"></td>
+        <td th:text="${account.animalType}"></td>
+        <td th:text="${account.isGoodGuy()} ? 'Good guy :)' : 'Bad guy :('"></td>
+        <td th:if="${account.isKing()} == true"><img src="/images/crown.png" class="image"></td>
+        <td th:unless="${account.isKing()} == true"></td>
+
+    </tr>
+</table>
+
+<div>
+    <form action="#" th:action="@{accountlist}" method="POST">
+        <label for="select"> Choose an Animal to donate to: </label>
+        <select id="select" name="animalName">
+            <option th:each="account : ${accountList}" th:value="${account.name}" th:text="${account.name}"></option>
+        </select>
+        <input type="submit" value="Donate">
+    </form>
+</div>
+<!--</div>-->
+
+</body>
+</html>
