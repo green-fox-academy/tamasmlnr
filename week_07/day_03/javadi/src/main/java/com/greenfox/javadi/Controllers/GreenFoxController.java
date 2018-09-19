@@ -15,6 +15,7 @@ public class GreenFoxController {
 
   @Autowired
   StudentService studentService;
+  Boolean studentExists;
 
   @GetMapping("/gfa")
   public String gfaMain(Model model) {
@@ -40,6 +41,19 @@ public class GreenFoxController {
   public String saveStudent(@RequestParam("name") String name, Model model) {
     studentService.save(name);
     return "redirect:list";
+  }
+
+  @GetMapping("/gfa/check")
+  public String checkStudent(Model model) {
+    model.addAttribute("studentExists", studentExists);
+    return "check";
+  }
+
+
+  @GetMapping("/gfa/checkstudent")
+  public String checkStudent(@RequestParam("name") String name, Model model) {
+    studentExists = studentService.checkIfStudentExists(name);
+    return "redirect:check";
   }
 
 

@@ -28,4 +28,9 @@ public class StudentService {
   public void save(String student) {
     names.add(student);
   }
+
+  public boolean checkIfStudentExists(String name) {
+    if (names.contains(name)) return true;
+    return false;
+  }
 }
