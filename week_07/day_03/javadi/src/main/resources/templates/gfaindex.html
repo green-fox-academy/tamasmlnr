@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Green Fox Academy</title>
@@ -12,6 +12,6 @@
 </ul>
 
 <p>Number of students:</p>
-
+<span th:text='${count}'>test</span>
 </body>
 </html>

@@ -17,6 +17,10 @@ public class StudentService {
     names.add("John");
   }
 
+  public int countStudents() {
+    return names.size();
+  }
+
   public List<String> findAll() {
     return names;
   }
