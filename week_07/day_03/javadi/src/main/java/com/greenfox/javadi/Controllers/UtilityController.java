@@ -34,5 +34,20 @@ public class UtilityController {
     return "email";
   }
 
+  @GetMapping("/useful/caesarencode")
+  public String caesarEncoding(@RequestParam("num") int number, @RequestParam("text") String text, Model model) {
+    String result = utilityService.caesar(text, number);
+    model.addAttribute("result", result);
+    return "caesar";
+  }
+
+  @GetMapping("/useful/caesardecode")
+  public String caesarDecoding(@RequestParam("num") int number, @RequestParam("text") String text, Model model) {
+    number = 0 - number;
+    String result = utilityService.caesar(text, number);
+    model.addAttribute("result", result);
+    return "caesar";
+  }
+
 
 }
