@@ -1,9 +1,11 @@
 package com.greenfoxacademy.messageservice.Service;
 
-public class EmailService implements MessageService{
+import org.springframework.stereotype.Service;
+
+public class EmailService implements MessageService {
 
   @Override
-  public String sendMessage() {
-    return "Sending email..";
+  public void sendMessage(String s1, String s2) {
+    System.out.println("Email sent to " + s2 + " with message: " + s1);
   }
 }

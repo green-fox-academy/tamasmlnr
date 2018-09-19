@@ -2,6 +2,6 @@ package com.greenfoxacademy.messageservice.Service;
 
 public interface MessageService {
 
-  String sendMessage();
+  void sendMessage(String s1, String s2);
 
 }

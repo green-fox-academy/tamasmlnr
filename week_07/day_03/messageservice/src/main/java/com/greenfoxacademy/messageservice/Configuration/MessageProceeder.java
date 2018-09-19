@@ -11,9 +11,8 @@ public class MessageProceeder {
   MessageService messageService;
 
   public void processMessage(String s, String s1) {
-
+    messageService.sendMessage(s, s1);
   }
-
 
 
 }
