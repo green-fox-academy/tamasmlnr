@@ -1,12 +1,14 @@
 package com.greenfox.javadi.Service;
 
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Qualifier("ArrayList")
 public class StudentServiceImpl implements StudentService {
   ArrayList<String> names;
 
