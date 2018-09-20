@@ -18,8 +18,7 @@
 <div th:if="${fox.getTrickCount()}==0">He knows no tricks yet. Go learn some!</div>
 <div th:if="${fox.getTrickCount()}>0">
     <ul>
-        <li>write HTML</li>
-        <li>code in Java</li>
+        <li th:each="trick : ${fox.getTricks()}" th:text="${trick}"></li>
     </ul>
 </div>
 </body>
