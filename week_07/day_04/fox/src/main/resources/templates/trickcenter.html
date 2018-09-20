@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" \>
+<head>
+    <meta charset="UTF-8">
+    <title>Trick center</title>
+</head>
+<body>
+
+<form th:action="@{/saveTrick}" th:method="get">
+    Select a trick to learn:
+    <input type="hidden" name="name" th:value="${name}"/>
+    <select name="trick">
+        <option th:each="trick : ${trickList}" th:value="${trick}"
+                th:text="${trick}"></option>
+    </select>
+
+
+
+    <br/>
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <title>Your Green Fox</title>
 </head>
-
-<a href="">Information</a>
+<ul>
+    <li><a th:href="@{'/?name=' + ${fox.name}}">Information</a></li>
+    <li><a th:href="@{'/nutritionStore/?name=' + ${fox.name}}">Nutrition Store</a></li>
+    <li><a th:href="@{'/trickCenter/?name=' + ${fox.name}}">Trick center</a></li>
+</ul>
 <p>
     <img src="images/greenfox.png">
 
-<p>This is <span th:text="${name}">.</span></p>
+<p> This is [[${fox.name}]]. Currently living on [[${fox.food}]] and drinking [[${fox.drink}]].
+    He currently knows [[${fox.getTrickCount()}]] tricks.</p>
 <h1>Known tricks</h1>
-<ul>
-    <li>write HTML</li>
-    <li>code in Java</li>
-</ul>
+<div th:if="${fox.getTrickCount()}==0">He knows no tricks yet. Go learn some!</div>
+<div th:if="${fox.getTrickCount()}>0">
+    <ul>
+        <li>write HTML</li>
+        <li>code in Java</li>
+    </ul>
+</div>
 </body>
 </html>
