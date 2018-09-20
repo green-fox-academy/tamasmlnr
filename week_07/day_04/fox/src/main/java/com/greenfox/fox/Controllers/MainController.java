@@ -33,12 +33,10 @@ public class MainController {
   }
 
   @GetMapping("/save")
-  public String loginWithName(@RequestParam("name") String name, Model model) {
-    model.addAttribute("name", name);
-    Fox fox = foxService.getByName(name);
-    model.addAttribute("fox", fox);
+  public String loginWithName(@RequestParam("name") String name, RedirectAttributes redirectAttributes) {
     foxService.createNew(name);
-    return "index";
+    redirectAttributes.addAttribute("name", name);
+    return "redirect:/";
   }
 
   @GetMapping("/nutritionStore")
