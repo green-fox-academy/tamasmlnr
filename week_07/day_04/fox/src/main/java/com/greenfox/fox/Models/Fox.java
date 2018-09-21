@@ -8,15 +8,36 @@ public class Fox {
   private String food;
   private String drink;
   private List<String> tricks;
+  private String oldColor;
+  private String newColor;
+
 
   public Fox(String name) {
     tricks = new ArrayList<>();
     this.name = name;
     this.food = "apples";
     this.drink = "mountain dew";
+    this.oldColor = "3cb878";
+    this.newColor = "3cb878";
   }
 
   public Fox() {
+  }
+
+  public String getOldColor() {
+    return oldColor;
+  }
+
+  public void setOldColor(String oldColor) {
+    this.oldColor = oldColor;
+  }
+
+  public String getNewColor() {
+    return newColor;
+  }
+
+  public void setNewColor(String newColor) {
+    this.newColor = newColor;
   }
 
   public String getName() {

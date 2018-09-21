@@ -2,6 +2,7 @@ package com.greenfox.fox.Controllers;
 
 
 import com.greenfox.fox.Models.Fox;
+import com.greenfox.fox.Services.ColorService;
 import com.greenfox.fox.Services.FoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,22 +14,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+
 @Controller
 public class MainController {
 
   @Autowired
   FoxService foxService;
+  @Autowired
+  ColorService colorService;
 
   @GetMapping("/")
   public String showIndex(@RequestParam("name") String name, Model model) {
     model.addAttribute("name", name);
     Fox fox = foxService.getByName(name);
     model.addAttribute("fox", fox);
+    model.addAttribute("timestamp", LocalDateTime.now());
     return "index";
   }
 
   @GetMapping("/login")
   public String login() {
+    try {
+      colorService.recreateGreenFox();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
     return "login";
   }
 
@@ -72,6 +84,7 @@ public class MainController {
     redirectAttributes.addAttribute("name", name);
     return "redirect:/";
   }
+
 
 
 }

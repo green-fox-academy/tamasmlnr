@@ -40,7 +40,6 @@ public class FoxService {
     Fox newFox = new Fox(name);
     foxList.getFoxes()
         .add(newFox);
-    System.out.println(newFox);
   }
 
   public List<String> getFoodList() {
@@ -69,5 +68,7 @@ public class FoxService {
     trickList.add("Watch Dallas");
     return trickList;
   }
+
+
 
 }

@@ -2,15 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org" \>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Expires" content="-1">
     <title>Your Green Fox</title>
 </head>
+<body onload="imgToCanvas()">
 <ul>
     <li><a th:href="@{'/?name=' + ${fox.name}}">Information</a></li>
     <li><a th:href="@{'/nutritionStore/?name=' + ${fox.name}}">Nutrition Store</a></li>
     <li><a th:href="@{'/trickCenter/?name=' + ${fox.name}}">Trick center</a></li>
+    <li><a th:href="@{'/colorPicker/?name=' + ${fox.name}}">Color changer</a></li>
 </ul>
 <p>
-    <img src="images/greenfox.png">
+
+
+    <div id="wrap">
+        <canvas id="c"></canvas>
+    </div>
 
 <p> This is [[${fox.name}]]. Currently living on [[${fox.food}]] and drinking [[${fox.drink}]].
     He currently knows [[${fox.getTrickCount()}]] tricks.</p>
@@ -21,5 +28,6 @@
         <li th:each="trick : ${fox.getTricks()}" th:text="${trick}"></li>
     </ul>
 </div>
+<script type="text/javascript" th:src="'drawfox.js?v=' + ${timestamp}"></script>
 </body>
 </html>
