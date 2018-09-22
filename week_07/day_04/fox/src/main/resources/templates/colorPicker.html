@@ -2,31 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org" \>
 <head>
     <meta charset="UTF-8">
-    <title>Trick center</title>
+    <title>Color picker</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
-
-
-<form th:action="@{/setColor}" th:method="post">
-    <input type="hidden" name="name" th:value="${name}"/>
-    Select color: <input type="color" name="color">
-    <input type="submit" value="Submit">
-</form>
-
-
-<!--<form th:action="@{/saveColor}" th:method="get">-->
-<!--Select a trick to learn:-->
-<!--<input type="hidden" name="name" th:value="${name}"/>-->
-<!--<select name="trick">-->
-<!--<option th:each="trick : ${trickList}" th:value="${trick}"-->
-<!--th:text="${trick}"></option>-->
-<!--</select>-->
-
-
-<!--<br/>-->
-
-<!--<input type="submit" value="Submit">-->
-<!--</form>-->
+<div id="main">
+    <form th:action="@{/setColor}" th:method="post">
+        <input type="hidden" name="name" th:value="${name}"/>
+        <h1>Select color:</h1>
+        <input type="color" name="color">
+        <p>
+        <input id="submitbutton" type="submit" value="Submit">
+    </form>
+</div>
 
 </body>
 </html>

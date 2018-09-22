@@ -1,14 +1,11 @@
 package com.greenfox.pun.controller;
 
-import com.greenfox.pun.model.Joke;
 import com.greenfox.pun.service.JokeService;
-import com.greenfox.pun.service.JokeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
 
 @Controller
 public class JokeController {
@@ -17,12 +14,7 @@ public class JokeController {
   @Autowired
   JokeService jokeService;
 
-  public JokeController(JokeService jokeService) {
-    this.jokeService = jokeService;
-  }
-
-
-  @RequestMapping({"/", ""})
+  @RequestMapping({"/"})
   public String showJoke(Model model) {
     model.addAttribute("joke", jokeService.getRandomJoke());
     return "pun";

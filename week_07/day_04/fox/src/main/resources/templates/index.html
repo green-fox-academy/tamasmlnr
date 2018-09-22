@@ -2,31 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org" \>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <meta http-equiv="Expires" content="-1">
     <title>Your Green Fox</title>
+
 </head>
-<body onload="imgToCanvas()">
-<ul>
-    <li><a th:href="@{'/?name=' + ${fox.name}}">Information</a></li>
-    <li><a th:href="@{'/nutritionStore/?name=' + ${fox.name}}">Nutrition Store</a></li>
-    <li><a th:href="@{'/trickCenter/?name=' + ${fox.name}}">Trick center</a></li>
-    <li><a th:href="@{'/colorPicker/?name=' + ${fox.name}}">Color changer</a></li>
+<body onload="imgToCanvas()" th:style="'background: linear-gradient(#'+${fox.newColor}+',#'+ ${fox.oldColor}+');'">
+
+<ul class="tabs  primary-nav">
+    <li class="tabs__item"><a class="tabs__link" th:href="@{'/?name=' + ${fox.name}}">Information</a></li>
+    <li class="tabs__item"><a class="tabs__link" th:href="@{'/nutritionStore/?name=' + ${fox.name}}">Nutrition Store</a>
+    </li>
+    <li class="tabs__item"><a class="tabs__link" th:href="@{'/trickCenter/?name=' + ${fox.name}}">Trick center</a></li>
+    <li class="tabs__item"><a class="tabs__link" th:href="@{'/colorPicker/?name=' + ${fox.name}}">Color changer</a></li>
 </ul>
-<p>
+
+<div id="main">
+    <p>
 
 
     <div id="wrap">
         <canvas id="c"></canvas>
     </div>
 
-<p> This is [[${fox.name}]]. Currently living on [[${fox.food}]] and drinking [[${fox.drink}]].
-    He currently knows [[${fox.getTrickCount()}]] tricks.</p>
-<h1>Known tricks</h1>
-<div th:if="${fox.getTrickCount()}==0">He knows no tricks yet. Go learn some!</div>
-<div th:if="${fox.getTrickCount()}>0">
-    <ul>
-        <li th:each="trick : ${fox.getTricks()}" th:text="${trick}"></li>
-    </ul>
+    <p> This is [[${fox.name}]]. Currently living on [[${fox.food}]] and drinking [[${fox.drink}]].
+        He currently knows [[${fox.getTrickCount()}]] tricks.</p>
+    <h1>Known tricks</h1>
+    <div th:if="${fox.getTrickCount()}==0">He knows no tricks yet. Go learn some!</div>
+    <div th:if="${fox.getTrickCount()}>0">
+        <ul>
+            <li th:each="trick : ${fox.getTricks()}" th:text="${trick}"></li>
+        </ul>
+    </div>
 </div>
 <script type="text/javascript" th:src="'drawfox.js?v=' + ${timestamp}"></script>
 </body>
