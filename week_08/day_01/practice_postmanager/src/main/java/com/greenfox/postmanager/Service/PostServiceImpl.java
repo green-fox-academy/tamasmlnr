@@ -29,7 +29,7 @@ public class PostServiceImpl implements PostService {
     postRepository.findAll()
         .forEach(posts::add);
     posts = posts.stream()
-        .sorted((o1, o2) -> (int) o1.getId() - (int) o2.getId())
+        .sorted((o1, o2) -> (int) o2.getId() - (int) o1.getId())
         .collect(Collectors.toList());
     return posts;
   }
