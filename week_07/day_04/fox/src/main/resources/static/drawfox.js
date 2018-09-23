@@ -36,7 +36,7 @@ function imgToCanvas(){
       ctx.bezierCurveTo(166.4, 135.3, 178.4, 124.0, 191.7, 114.2);
       ctx.bezierCurveTo(196.3, 110.8, 201.3, 107.9, 206.5, 105.6);
       ctx.closePath();
-      ctx.fillStyle = "rgb(53,236,251)";
+      ctx.fillStyle = "rgb(213,213,213)";
       ctx.fill();
 
       // layer1/Path
@@ -135,7 +135,7 @@ function imgToCanvas(){
       ctx.bezierCurveTo(54.2, 135.3, 42.2, 124.0, 28.9, 114.2);
       ctx.bezierCurveTo(24.3, 110.8, 19.3, 107.9, 14.1, 105.6);
       ctx.closePath();
-      ctx.fillStyle = "rgb(0,176,191)";
+      ctx.fillStyle = "rgb(153,153,153)";
       ctx.fill();
 
       // layer1/Group/Path
@@ -638,7 +638,7 @@ function imgToCanvas(){
       ctx.bezierCurveTo(240.1, 120.9, 239.2, 120.5, 238.4, 120.6);
       ctx.bezierCurveTo(239.2, 120.1, 240.0, 120.2, 240.9, 120.2);
       ctx.closePath();
-      ctx.fillStyle = "rgb(53,236,251)";
+      ctx.fillStyle = "rgb(213,213,213)";
       ctx.fill();
 
       // layer1/Path
@@ -647,7 +647,7 @@ function imgToCanvas(){
       ctx.bezierCurveTo(267.7, 175.3, 267.3, 174.5, 268.0, 173.9);
       ctx.bezierCurveTo(268.0, 174.7, 268.0, 175.4, 267.6, 176.0);
       ctx.closePath();
-      ctx.fillStyle = "rgb(53,236,251)";
+      ctx.fillStyle = "rgb(213,213,213)";
       ctx.fill();
 
       // layer1/Path
@@ -656,7 +656,7 @@ function imgToCanvas(){
       ctx.bezierCurveTo(237.7, 148.0, 237.3, 147.0, 238.0, 146.1);
       ctx.bezierCurveTo(238.0, 147.1, 238.1, 148.1, 237.7, 149.0);
       ctx.closePath();
-      ctx.fillStyle = "rgb(53,236,251)";
+      ctx.fillStyle = "rgb(213,213,213)";
       ctx.fill();
 
       // layer1/Path
@@ -669,7 +669,7 @@ function imgToCanvas(){
       ctx.bezierCurveTo(69.6, 108.3, 71.3, 110.0, 72.4, 112.4);
       ctx.bezierCurveTo(72.8, 113.5, 73.0, 114.6, 73.0, 115.8);
       ctx.closePath();
-      ctx.fillStyle = "rgb(0,176,191)";
+      ctx.fillStyle = "rgb(153,153,153)";
       ctx.fill();
 
       // layer1/Path
@@ -683,7 +683,7 @@ function imgToCanvas(){
       ctx.bezierCurveTo(162.4, 113.2, 162.5, 113.8, 162.6, 114.3);
       ctx.bezierCurveTo(162.8, 115.2, 162.8, 116.2, 162.6, 117.1);
       ctx.closePath();
-      ctx.fillStyle = "rgb(53,236,251)";
+      ctx.fillStyle = "rgb(213,213,213)";
       ctx.fill();
 
       // layer1/Path
@@ -692,7 +692,7 @@ function imgToCanvas(){
       ctx.bezierCurveTo(162.6, 116.2, 162.6, 115.2, 162.6, 114.3);
       ctx.bezierCurveTo(163.0, 115.2, 163.0, 116.2, 162.6, 117.1);
       ctx.closePath();
-      ctx.fillStyle = "rgb(53,236,251)";
+      ctx.fillStyle = "rgb(213,213,213)";
       ctx.fill();
 
       // layer1/Path
@@ -719,7 +719,7 @@ function imgToCanvas(){
       ctx.bezierCurveTo(159.8, 109.2, 162.4, 112.1, 162.1, 115.8);
       ctx.bezierCurveTo(161.7, 119.9, 159.5, 122.7, 156.4, 122.3);
       ctx.closePath();
-      ctx.fillStyle = "rgb(53,236,251)";
+      ctx.fillStyle = "rgb(213,213,213)";
       ctx.fill();
       ctx.restore();
 }

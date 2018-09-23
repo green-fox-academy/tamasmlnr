@@ -9,8 +9,6 @@ public class Bird extends Animal {
     this.cutenessFactor=5;
   }
 
-
-
   @Override
   public String breed() {
     return "laying eggs";
@@ -25,6 +23,4 @@ public class Bird extends Animal {
   public String environent() {
     return "air";
   }
-
-
 }

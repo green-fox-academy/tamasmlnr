@@ -19,8 +19,6 @@ public class ColorService {
     String tempColor = fox.getNewColor();
     fox.setNewColor(newColor);
     fox.setOldColor(tempColor);
-    System.out.println("new" + newColor);
-    System.out.println("old" + tempColor);
     colorChanger(fox.getOldColor(), fox.getNewColor());
   }
 
