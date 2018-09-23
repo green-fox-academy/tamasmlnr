@@ -4,9 +4,12 @@ package com.greenfox.postmanager.Controller;
 import com.greenfox.postmanager.Model.Post;
 import com.greenfox.postmanager.Service.PostService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class PostController {
@@ -18,7 +21,8 @@ public class PostController {
   }
 
   @GetMapping("/")
-  public String showPosts() {
+  public String showPosts(Model model) {
+    model.addAttribute("posts", postService.getAllPosts());
     return "posts";
   }
 
@@ -28,8 +32,8 @@ public class PostController {
   }
 
   @PostMapping("/savepost")
-  public String savePost(@RequestParam("content") Post post) {
-
+  public String savePost(@RequestParam("content") String content) {
+    postService.addPost(content);
     return "posts";
   }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Posts</title>
@@ -9,6 +9,14 @@
 <body>
 <a href="/addpost">Add post</a>
 <p>Posts</p>
+<div th:if="${posts.size()>0}"></div>
+<table>
+    <tr th:each="post: ${posts}">
+        <td th:text="${post.id}"></td>
+        <td th:text="${post.getContent()}"></td>
+        <td><a th:href="'/delete/'+${post.getId()}" th:text="delete"></a></td>
+    </tr>
+</table>
 
 </body>
 </html>

@@ -6,9 +6,12 @@ import java.util.List;
 
 public interface PostService {
 
-  void addPost(Post post);
-  void delete(Post post);
-  List<Post> getPostList();
+  void addPost(String content);
+
+  void deletePost(Post post);
+
   Post getPostById(Long id);
+
+  List<Post> getAllPosts();
 
 }
