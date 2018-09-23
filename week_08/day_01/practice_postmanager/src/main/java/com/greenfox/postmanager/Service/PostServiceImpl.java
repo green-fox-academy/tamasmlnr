@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -25,6 +28,9 @@ public class PostServiceImpl implements PostService {
     List<Post> posts = new ArrayList<>();
     postRepository.findAll()
         .forEach(posts::add);
+    posts = posts.stream()
+        .sorted((o1, o2) -> (int) o1.getId() - (int) o2.getId())
+        .collect(Collectors.toList());
     return posts;
   }
 

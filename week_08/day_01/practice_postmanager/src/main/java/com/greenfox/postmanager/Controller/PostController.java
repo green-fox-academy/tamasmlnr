@@ -6,6 +6,7 @@ import com.greenfox.postmanager.Service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,7 +35,13 @@ public class PostController {
   @PostMapping("/savepost")
   public String savePost(@RequestParam("content") String content) {
     postService.addPost(content);
-    return "posts";
+    return "redirect:/";
+  }
+
+  @GetMapping("/delete/{id}")
+  public String deletePost(@PathVariable String id) {
+    postService.deletePost(postService.getPostById(Long.decode(id)));
+    return "redirect:/";
   }
 
 }
