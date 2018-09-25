@@ -1,13 +1,24 @@
 package com.greenfox.todoh2.Model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class ToDo {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
   private String title;
   private Boolean urgent;
   private Boolean done;
 
-  public ToDo(long id, String title) {
-    this.id = id;
+  public ToDo() {
+  }
+
+  public ToDo(String title) {
     this.title = title;
     this.urgent = false;
     this.done = false;
@@ -43,5 +54,9 @@ public class ToDo {
 
   public void setDone(Boolean done) {
     this.done = done;
+  }
+
+  public String toString() {
+    return this.title;
   }
 }
