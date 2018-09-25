@@ -34,14 +34,34 @@ public class ToDoController {
     return "redirect:/todo";
   }
 
+  @GetMapping(value = "/delete/{id}")
+  public String delete(@PathVariable("id") long id, Model model) {
+    toDoRepository.deleteById(id);
+    return "redirect:/todo";
+  }
+
+  @GetMapping(value = "/edit/{id}")
+  public String edit(@PathVariable("id") long id, Model model) {
+    ToDo todo = toDoRepository.findById(id)
+        .orElse(null);
+    model.addAttribute("todo", todo);
+    return "edit";
+  }
+
+  @PostMapping(value = "/saveedited")
+  public String saveedited(@ModelAttribute ToDo toDo, Model model) {
+    toDoRepository.save(toDo);
+    return "redirect:/todo";
+  }
+
   @GetMapping(value = {"", "/", "/list"})
   public String list(@RequestParam(value = "isActive", required = false) Boolean isActive, Model model) {
     List<ToDo> todos = toDoRepository.findAll();
+    todos = todos.stream()
+        .sorted((o1, o2) -> (int) o1.getId() - (int) o2.getId())
+        .collect(Collectors.toList());
     if (isActive != null) {
-      List<ToDo> todosFiltered = todos.stream()
-          .filter(todo -> todo.getDone() == false)
-          .collect(Collectors.toList());
-      model.addAttribute("todotasks", todosFiltered);
+      model.addAttribute("todotasks", toDoRepository.findByDone(false));
       return "/todolist";
     }
     model.addAttribute("todotasks", todos);

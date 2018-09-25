@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ToDoRepository extends CrudRepository<ToDo, Long> {
   List<ToDo> findAll();
+  List<ToDo> findByDone(Boolean isDone);
 }
