@@ -2,36 +2,71 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+    <meta charset="UTF-8" \>
+    <title>ToDo list</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <style>
-        table, td {
-            border: 1px solid black;
+        table, td, th, h1 {
+            text-align: center;
         }
     </style>
 </head>
 <body>
-<a href="/todo/addtodo">Add new ToDo</a>
-<a href="/todo?isActive=true">Show only completed ones</a>
-<h1>Todos for today:</h1>
 
-<table>
+<nav class="navbar navbar-default">
+
+    <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="/todo/addtodo">Add new ToDo</a></li>
+            <li><a href="/todo?isActive=true">Show only uncompleted ones</a></li>
+            <li><a href="/todo">Show all</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<h1>Todos for today</h1>
+
+
+<table class="table">
+    <thead class="thead-light">
     <tr>
         <th>ID</th>
         <th>ACTION</th>
         <th>URGENT</th>
         <th>DONE</th>
-    <tr th:each="todo : ${todotasks}">
+        <th>DELETE</th>
+        <th>EDIT</th>
+    </tr>
+    </thead>
+    <tr scope="row" th:each="todo : ${todotasks}">
         <td th:text=" ${todo.id}"></td>
         <td th:text=" ${todo.title}"></td>
-        <td th:text=" ${todo.urgent}"></td>
-        <td th:text=" ${todo.done}"></td>
+        <td th:if="${todo.urgent} == true"><img src="/images/exclamation.png" class="image" width="15px"></td>
+        <td th:unless="${todo.urgent} == true"></td>
+        <td th:if="${todo.done} == true"><img src="/images/Check_mark.png" class="image" width="15px"></td>
+        <td th:unless="${todo.done} == true"></td>
         <td>
             <a th:href="@{'/todo/delete/' + ${todo.id}}">delete</a></td>
         <td><a th:href="@{'/todo/edit/' + ${todo.id}}">edit</a></td>
     </tr>
 </table>
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 </body>
+
+
 </html>

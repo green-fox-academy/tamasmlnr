@@ -8,11 +8,12 @@
 
 <form action="#" th:action="@{/todo/saveedited}" th:object="${todo}" method="post">
     <input type="hidden" name="id" th:value="${todo.id}"/>
-    <textarea name="title" th:value="${todo.title}"/>[[${todo.title}]]</textarea>
-    <input type="checkbox" th:field="${todo.urgent}"/>
-    <input type="checkbox" th:field="${todo.done}"/>
-    <input type="submit" value="Submit"/>
-</form>
+    <p><textarea name="title" th:value="${todo.title}"/>[[${todo.title}]]</textarea></p>
+    <p>Urgent<input type="checkbox" th:field="${todo.urgent}"/></p>
+    <p>Done<input type="checkbox" th:field="${todo.done}"/></p>
+    <p><input type="submit" value="Submit"/>
 
+</form>
+<a href="/todo/">Cancel</a>
 </body>
 </html>
