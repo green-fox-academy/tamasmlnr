@@ -11,14 +11,15 @@
     </style>
 </head>
 <body>
+<a href="/todo/addtodo">Add new ToDo</a>
 <h1>Todos for today:</h1>
 
 <table>
     <tr>
         <th>ID</th>
         <th>ACTION</th>
-        <th>DONE</th>
         <th>URGENT</th>
+        <th>DONE</th>
     <tr th:each="todo : ${todotasks}">
         <td th:text=" ${todo.id}"></td>
         <td th:text=" ${todo.title}"></td>

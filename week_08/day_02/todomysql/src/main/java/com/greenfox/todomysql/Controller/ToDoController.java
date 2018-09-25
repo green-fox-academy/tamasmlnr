@@ -2,12 +2,11 @@ package com.greenfox.todomysql.Controller;
 
 import com.greenfox.todomysql.Model.ToDo;
 import com.greenfox.todomysql.Repository.ToDoRepository;
+import com.greenfox.todomysql.Service.ToDoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +22,18 @@ public class ToDoController {
     this.toDoRepository = toDoRepository;
   }
 
+  @GetMapping(value = "/addtodo")
+  public String addTodo(Model model) {
+    model.addAttribute("newTodo", new ToDo());
+    return "addtodo";
+  }
+
+  @PostMapping(value = "/save")
+  public String SaveTodo(@ModelAttribute("newTodo") ToDo newTodo, Model model) {
+    toDoRepository.save(newTodo);
+    return "redirect:/todo";
+  }
+
   @GetMapping(value = {"", "/", "/list"})
   public String list(@RequestParam(value = "isActive", required = false) Boolean isActive, Model model) {
     List<ToDo> todos = toDoRepository.findAll();
@@ -33,9 +44,9 @@ public class ToDoController {
       model.addAttribute("todotasks", todosFiltered);
       return "/todolist";
     }
-
     model.addAttribute("todotasks", todos);
     return "/todolist";
   }
+
 
 }

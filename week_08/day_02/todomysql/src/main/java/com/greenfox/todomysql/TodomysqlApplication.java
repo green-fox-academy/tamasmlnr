@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TodomysqlApplication implements CommandLineRunner {
 
   @Autowired
-
   ToDoRepository toDoRepository;
 
   public static void main(String[] args) {
