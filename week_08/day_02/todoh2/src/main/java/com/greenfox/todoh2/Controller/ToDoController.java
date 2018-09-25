@@ -26,7 +26,7 @@ public class ToDoController {
 
   @GetMapping(value = {"", "/", "/list"})
   public String list(Model model) {
-    Iterable<ToDo> todos = toDoRepository.findAll();
+    List<ToDo> todos = toDoRepository.findAll();
     model.addAttribute("todos", todos);
     return "/todolist";
   }

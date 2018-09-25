@@ -4,13 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        table, td {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
 <h1>Todos for today:</h1>
-<ul>
-    <ul>
-        <li th:each="todo : ${todos}" th:text="${todo}"></li>
-    </ul>
-</ul>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>ACTION</th>
+        <th>DONE</th>
+        <th>URGENT</th>
+    <tr th:each="todo : ${todotasks}">
+        <td th:text=" ${todo.id}"></td>
+        <td th:text=" ${todo.title}"></td>
+        <td th:text=" ${todo.urgent}"></td>
+        <td th:text=" ${todo.done}"></td>
+    </tr>
+</table>
+
+
 </body>
 </html>
