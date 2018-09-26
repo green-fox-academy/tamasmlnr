@@ -65,7 +65,7 @@ public class ColorService {
   }
 
   public static void modifyColor(String oldColor, String newColor) throws IOException {
-    Path path = Paths.get("C:\\Users\\Tamás\\greenfox\\tamasmlnr\\week_07\\day_04\\fox\\src\\main\\resources\\static\\drawfox.js");
+    Path path = Paths.get("src\\main\\resources\\static\\drawfox.js");
     Charset charset = StandardCharsets.UTF_8;
     String content = new String(Files.readAllBytes(path), charset);
     content = content.replaceAll(oldColor, newColor);
@@ -74,12 +74,12 @@ public class ColorService {
 
   public static void recreateGreenFox()
       throws IOException {
-    Files.deleteIfExists(Paths.get("C:\\Users\\Tamás\\greenfox\\tamasmlnr\\week_07\\day_04\\fox\\src\\main\\resources\\static\\drawfox.js"));
+    Files.deleteIfExists(Paths.get("src\\main\\resources\\static\\drawfox.js"));
     InputStream input = null;
     OutputStream output = null;
     try {
-      input = new FileInputStream("C:\\Users\\Tamás\\greenfox\\tamasmlnr\\week_07\\day_04\\fox\\src\\main\\resources\\static\\drawfoxOrig.js");
-      output = new FileOutputStream("C:\\Users\\Tamás\\greenfox\\tamasmlnr\\week_07\\day_04\\fox\\src\\main\\resources\\static\\drawfox.js");
+      input = new FileInputStream("src\\main\\resources\\static\\drawfoxOrig.js");
+      output = new FileOutputStream("src\\main\\resources\\static\\drawfox.js");
       byte[] buf = new byte[1024];
       int bytesRead;
       while ((bytesRead = input.read(buf)) > 0) {

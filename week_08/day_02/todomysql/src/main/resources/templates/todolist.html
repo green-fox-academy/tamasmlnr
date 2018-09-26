@@ -47,24 +47,16 @@
     <tr scope="row" th:each="todo : ${todotasks}">
         <td th:text=" ${todo.id}"></td>
         <td th:text=" ${todo.title}"></td>
-        <td th:if="${todo.urgent} == true"><img src="/images/exclamation.png" class="image" width="15px"></td>
+        <td th:if="${todo.urgent} == true"><img src="/images/exclamation.png" class="image" width="15px"> </td>
         <td th:unless="${todo.urgent} == true"></td>
-        <td th:if="${todo.done} == true"><img src="/images/Check_mark.png" class="image" width="15px"></td>
-        <td th:unless="${todo.done} == true"></td>
+        <td th:if="${todo.done} == true"><span class="glyphicon glyphicon-ok"></span> </td>
+        <td th:unless="${todo.done} == true"><span class="glyphicon glyphicon-remove"></td>
         <td>
-            <a th:href="@{'/todo/delete/' + ${todo.id}}">delete</a></td>
-        <td><a th:href="@{'/todo/edit/' + ${todo.id}}">edit</a></td>
+            <a th:href="@{'/todo/delete/' + ${todo.id}}" class="btn btn-danger">delete</a></td>
+        <td><a th:href="@{'/todo/edit/' + ${todo.id}}" class="btn btn-primary">edit</a></td>
     </tr>
 </table>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+
 
 </body>
 

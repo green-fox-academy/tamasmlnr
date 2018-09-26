@@ -36,11 +36,11 @@ public class MainController {
 
   @GetMapping("/login")
   public String login() {
-    try {
-      colorService.recreateGreenFox();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+//    try {
+//      colorService.recreateGreenFox();
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//    }
     return "login";
   }
 
