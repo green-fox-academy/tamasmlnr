@@ -8,8 +8,8 @@
 
 Add new post
 <form action="#" th:action="@{/savepost}" th:object="${newPost}" method="post">
-    <input type="text" th:field="${newPost.title}"/>
-    <input type="text" th:field="${newPost.content}"/>
+    <input type="text" name="title"/>
+    <input type="text" name="content"/>
     <input type="submit" value="Submit"/>
 </form>
 

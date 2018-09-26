@@ -35,6 +35,7 @@ public class PostController {
   @PostMapping("/savepost")
   public String savePost(@ModelAttribute("newPost") Post post, Model model) {
     postService.savePost(post);
+    return "redirect:/";
   }
 
 }
