@@ -28,4 +28,22 @@ public class PostServiceImpl implements PostService {
   public void savePost(Post post) {
     postRepository.save(post);
   }
+
+  @Override
+  public void downvoteById(Integer id) {
+    Long lid = (long) id;
+    Post post = postRepository.findById(lid)
+        .orElse(null);
+    post.setScore(post.getScore() - 1);
+    postRepository.save(post);
+  }
+
+  @Override
+  public void upvoteById(Integer id) {
+    Long lid = (long) id;
+    Post post = postRepository.findById(lid)
+        .orElse(null);
+    post.setScore(post.getScore() + +1);
+    postRepository.save(post);
+  }
 }

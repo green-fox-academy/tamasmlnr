@@ -10,4 +10,8 @@ public interface PostService {
   List<Post> findAll();
 
   void savePost(Post post);
+
+  void downvoteById(Integer id);
+
+  void upvoteById(Integer id);
 }

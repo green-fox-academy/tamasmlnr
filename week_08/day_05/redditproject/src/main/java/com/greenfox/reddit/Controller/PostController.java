@@ -6,9 +6,7 @@ import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
@@ -37,5 +35,19 @@ public class PostController {
     postService.savePost(post);
     return "redirect:/";
   }
+
+  @GetMapping("downvote/{id}")
+  public String downvote(@PathVariable("id") Integer id) {
+    postService.downvoteById(id);
+    return "redirect:/";
+  }
+
+
+  @GetMapping("upvote/{id}")
+  public String upnvote(@PathVariable("id") Integer id) {
+    postService.upvoteById(id);
+    return "redirect:/";
+  }
+
 
 }

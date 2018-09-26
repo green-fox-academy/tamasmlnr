@@ -12,9 +12,10 @@
 <div th:if="${posts.size()>0}"></div>
 <table>
     <tr th:each="post: ${posts}">
-        <td th:text="${post.id}"></td>
+        <td><a th:href="@{'/downvote/' + ${post.id}}">-</a></td>
+        <td><a th:href="@{'/upvote/' + ${post.id}}">+</a></td>
+        <td th:text="${post.score}"></td>
         <td th:text="${post.title}"></td>
-        <td th:text="${post.content}"></td>
         <!--<td><a th:href="'/delete/'+${post.getId()}" th:text="delete"></a></td>-->
     </tr>
 </table>
