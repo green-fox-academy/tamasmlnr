@@ -3,14 +3,12 @@ out
 *.iml
 *.xml
 .DS_Store
-
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
 /out/
-
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
