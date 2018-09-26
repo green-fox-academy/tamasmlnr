@@ -3,10 +3,7 @@ package com.greenfox.fox.Services;
 import com.greenfox.fox.Models.Fox;
 import com.greenfox.fox.Models.FoxList;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Service

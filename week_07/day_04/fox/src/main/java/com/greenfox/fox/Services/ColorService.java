@@ -1,9 +1,7 @@
 package com.greenfox.fox.Services;
 
-
 import com.greenfox.fox.Models.Fox;
 import org.springframework.stereotype.Service;
-
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;

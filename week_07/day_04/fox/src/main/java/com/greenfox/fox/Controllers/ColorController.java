@@ -1,6 +1,5 @@
 package com.greenfox.fox.Controllers;
 
-
 import com.greenfox.fox.Models.Fox;
 import com.greenfox.fox.Services.ColorService;
 import com.greenfox.fox.Services.FoxService;
