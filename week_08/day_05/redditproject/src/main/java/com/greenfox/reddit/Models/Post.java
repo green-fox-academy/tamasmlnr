@@ -17,11 +17,10 @@ public class Post {
   private long id;
   private String content;
   private String title;
-  private String url;
+  private int score = 0;
 
-  public Post(String content, String title, String url) {
+  public Post(String content, String title) {
     this.content = content;
     this.title = title;
-    this.url = url;
   }
 }
