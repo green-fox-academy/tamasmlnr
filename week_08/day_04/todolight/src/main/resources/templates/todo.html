@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8" \>
+    <title>ToDo list</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        th, h1 {
+            text-align: center;
+        }
+
+        .lined {
+            text-decoration: line-through;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+
+Add new todo
+<form action="#" th:action="@{/todo/save}" th:object="${newTodo}" method="post">
+    <input type="text" name="content"/>
+    <input type="hidden" name="done" value="false"/>
+    <input type="submit" value="Submit"/>
+</form>
+
+
+<h1>Todos for today</h1>
+
+
+<table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+        <th>Id</th>
+        <th>To Do</th>
+        <th>Actions</th>
+
+    </tr>
+    </thead>
+    <tr scope="row" th:each="todo : ${todolist}" th:classappend="${todo.done} ? lined : ''">
+        <td th:text=" ${todo.id}"></td>
+        <td th:text=" ${todo.content}"></td>
+        <td><a th:href="@{'/todo/delete/' + ${todo.id}}">delete</a><br>
+            <a th:href="@{'/todo/complete/' + ${todo.id}}">mark complete</a></td>
+    </tr>
+</table>
+
+
+</body>
+
+
+</html>
