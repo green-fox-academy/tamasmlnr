@@ -56,13 +56,15 @@
             </div>
         </div>
     </div>
-    
+
     Add new todo
     <form action="#" th:action="@{/todo/save}" th:object="${newTodo}" method="post">
         <input type="text" name="content"/>
         <input type="hidden" name="done" value="false"/>
         <input type="submit" value="Submit"/>
     </form>
+
+    <a href="/todo/assignees" class="btn btn-primary btn-default">Assignees</a>
 
     <h1>Todos for today</h1>
 
