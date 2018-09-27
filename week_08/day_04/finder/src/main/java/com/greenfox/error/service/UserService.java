@@ -22,4 +22,9 @@ public class UserService {
     users.add(user);
   }
 
+  public UserService service() {
+    return new UserService();
+  }
+
+
 }
