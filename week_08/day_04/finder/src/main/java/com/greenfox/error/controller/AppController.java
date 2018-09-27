@@ -18,7 +18,6 @@ public class AppController {
   @Autowired
   UserService service;
 
-
   @GetMapping("/")
   public String index(Model model) {
     model.addAttribute("new_user", new User());

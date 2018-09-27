@@ -25,6 +25,4 @@ public class UserService {
   public UserService service() {
     return new UserService();
   }
-
-
 }
