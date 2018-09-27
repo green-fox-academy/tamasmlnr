@@ -10,4 +10,7 @@ import java.util.List;
 @Repository
 public interface ToDoRepository extends CrudRepository<ToDo, Integer> {
   List<ToDo> findAll();
+
+  List<ToDo> findByContentContaining(String content);
+
 }

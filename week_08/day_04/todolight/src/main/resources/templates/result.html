@@ -22,6 +22,7 @@
 
         #imaginary_container {
             margin-top: 20%;
+        /
         }
 
         .stylish-input-group .input-group-addon {
@@ -29,6 +30,7 @@
         }
 
         .stylish-input-group .form-control {
+
             box-shadow: 0 0 0;
             border-color: #ccc;
         }
@@ -48,13 +50,13 @@
 
                     <form action="#" th:action="@{/todo/search}" method="post" style="width: 500px">
                         <input type="text" class="form-control" name="content" placeholder="Search by id or content">
-                        </span>
+                    </span>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
+    
     Add new todo
     <form action="#" th:action="@{/todo/save}" th:object="${newTodo}" method="post">
         <input type="text" name="content"/>
