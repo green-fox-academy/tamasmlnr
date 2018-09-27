@@ -1,4 +1,4 @@
-package finder;
+package com.greenfox.error;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
