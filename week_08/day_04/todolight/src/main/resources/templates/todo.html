@@ -69,6 +69,7 @@
         <tr>
             <th>Id</th>
             <th>To Do</th>
+            <th>Assignee/Change assignee</th>
             <th>Actions</th>
 
         </tr>
@@ -76,8 +77,24 @@
         <tr scope="row" th:each="todo : ${todolist}" th:classappend="${todo.done} ? lined : ''">
             <td th:text=" ${todo.id}"></td>
             <td th:text=" ${todo.content}"></td>
+            <td>
+                <form action="/todo/savepostassignee" method="POST">
+                    Current: [[${todo.getAssignee()}]]
+                    <select onchange="this.form.submit()" name="assigneeId">
+                        <option>Select new:</option>
+                        <option th:each="assignee : ${assignees}"
+                                th:value="${assignee.name}"
+                                th:text="${assignee.name}">
+                            <!--th:selected="${assignee==todo.getAssignee()}">-->
+                        </option>
+                    </select>
+                    <input type="hidden" th:value="${todo.id}" th:attr="name='id'"/>
+                </form>
+
+            </td>
             <td><a th:href="@{'/todo/delete/' + ${todo.id}}">delete</a><br>
                 <a th:href="@{'/todo/complete/' + ${todo.id}}">mark complete</a></td>
+            <td th:text=" ${todo.assignee}"></td>
         </tr>
     </table>
 

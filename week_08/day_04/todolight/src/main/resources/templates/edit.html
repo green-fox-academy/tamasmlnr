@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+
+
+<form action="#" th:action="@{/todo/saveedited}" th:object="${assignee}" method="post">
+    <input type="text" name="email" th:value="${assignee.email}"/>
+    <input type="text" name="name" th:value="${assignee.name}"/>
+    <input type="hidden" name="id" th:value="${assignee.id}"/>
+    <input type="submit" value="Submit"/>
+</form>
+
+<a href="/todo/">Cancel</a>
+</body>
+</html>

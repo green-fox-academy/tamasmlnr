@@ -1,18 +1,28 @@
 package com.greenfox.todolight.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Assignee {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private int id;
+  private long id;
   private String name;
   private String email;
+
+
+  @OneToMany(mappedBy = "assignee")
+  private List<ToDo> toDos;
+
+  public void addToDos(List<ToDo> todos) {
+    this.toDos = todos;
+  }
+
+  public List<ToDo> getToDos() {
+    return toDos;
+  }
 
   public Assignee(String name, String email) {
     this.name = name;
@@ -36,5 +46,17 @@ public class Assignee {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public String toString() {
+    return "" + this.name;
   }
 }

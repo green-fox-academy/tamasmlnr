@@ -2,10 +2,7 @@ package com.greenfox.todolight.Model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class ToDo {
@@ -15,6 +12,8 @@ public class ToDo {
   private String content;
   private boolean done;
 
+  @ManyToOne
+  private Assignee assignee;
 
   public ToDo(String content) {
     this.content = content;
@@ -22,6 +21,14 @@ public class ToDo {
   }
 
   public ToDo() {
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
+  }
+
+  public Assignee getAssignee() {
+    return this.assignee;
   }
 
   public int getId() {

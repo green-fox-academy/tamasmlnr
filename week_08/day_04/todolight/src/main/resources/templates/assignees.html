@@ -76,8 +76,8 @@
         <tr scope="row" th:each="assignee : ${assignees}">
             <td th:text=" ${assignee.email}"></td>
             <td th:text=" ${assignee.name}"></td>
-            <a th:href="@{'/todo/modify/' + ${assignee.id}}">modify</a></td>
-            <td><a th:href="@{'/todo/delete/' + ${assignee.id}}">delete</a><br>
+            <td><a th:href="@{'/todo/editassignee/' + ${assignee.id}}">modify</a><br>
+            <a th:href="@{'/todo/deleteassignee/' + ${assignee.id}}">delete</a><br>
         </tr>
     </table>
 

@@ -20,10 +20,12 @@ public class ToDoController {
 
 
   ToDoRepository toDoRepository;
+  AssigneeRepository assigneeRepository;
 
   @Autowired
-  public ToDoController(ToDoRepository toDoRepository) {
+  public ToDoController(ToDoRepository toDoRepository, AssigneeRepository assigneeRepository) {
     this.toDoRepository = toDoRepository;
+    this.assigneeRepository = assigneeRepository;
   }
 
   @GetMapping("/")
@@ -39,8 +41,7 @@ public class ToDoController {
     List<ToDo> alltodo = toDoRepository.findAll();
     model.addAttribute("todolist", alltodo);
     model.addAttribute("newTodo", new ToDo());
-    List<ToDo> filteredList = new ArrayList<>();
-    model.addAttribute("filtered", filteredList);
+    model.addAttribute("assignees", assigneeRepository.findAll());
     return "todo";
   }
 
@@ -77,7 +78,6 @@ public class ToDoController {
     toDoRepository.delete(toDo);
     return "redirect:/todo";
   }
-
 
 
 }
