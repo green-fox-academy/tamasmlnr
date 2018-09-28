@@ -1,7 +1,9 @@
 package com.greenfox.reddit.Service;
 
 
+import com.greenfox.reddit.Models.Comment;
 import com.greenfox.reddit.Models.Post;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -16,4 +18,6 @@ public interface PostService {
   void upvoteById(Integer id);
 
   Post findById(Long id);
+
+  void addComment(Comment comment);
 }

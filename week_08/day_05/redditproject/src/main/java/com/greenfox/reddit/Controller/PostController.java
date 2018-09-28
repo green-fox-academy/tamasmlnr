@@ -46,7 +46,7 @@ public class PostController {
   }
 
   @GetMapping("upvote/{id}")
-  public String upnvote(@PathVariable("id") Integer id) {
+  public String upvote(@PathVariable("id") Integer id) {
     postService.upvoteById(id);
     return "redirect:/";
   }

@@ -21,6 +21,16 @@
 
     <h2>Comments</h2>
 
+
+    <h2>Add new comment</h2>
+
+    <form action="#" th:action="@{/savecomment}" th:object="${newComment}" method="post">
+        Your name:<input type="text" name="author"/>
+        Your comment:<input type="text" name="content"/>
+        <input type="hidden" name="id" th:value="${post.id}"/>
+        <input type="submit" value="Submit"/>
+    </form>
+
     <div th:if="${comments.size()>0}">
         <table class="table table-borderless table-striped table-hover">
             <thead class="table-inverse">
@@ -34,8 +44,9 @@
                 <td th:text="${comment.content}"></td>
                 <td th:text="${comment.localDateTime}"></td>
             </tr>
-        </table>
 
+
+        </table>
     </div>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"

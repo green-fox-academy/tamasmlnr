@@ -18,10 +18,18 @@ public class Comment {
   public Comment() {
   }
 
+  public void setPost(Post post) {
+    this.post = post;
+  }
+
+  public Post getPost() {
+    return this.post;
+  }
+
   public Comment(String author, String content) {
     this.author = author;
     this.content = content;
-    this.localDateTime = getLocalDateTime();
+    this.localDateTime = LocalDateTime.now();
   }
 
   public String getAuthor() {

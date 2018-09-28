@@ -7,10 +7,7 @@ import com.greenfox.reddit.Service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CommentController {
@@ -29,13 +26,15 @@ public class CommentController {
     Post post = postService.findById(id);
     model.addAttribute("post", post);
     model.addAttribute("newComment", new Comment());
-    model.addAttribute("comments", commentService.findAll());
+    model.addAttribute("comments", commentService.findAllByPostId(id));
     return "post";
   }
 
   @PostMapping("/savecomment")
-  public String saveComment(@ModelAttribute("newComment") Comment comment, Model model) {
+  public String saveComment(@ModelAttribute("newComment") Comment comment, @RequestParam("id") Long id, Model model) {
+    Post post = postService.findById(id);
+    comment.setPost(post);
     commentService.save(comment);
-    return "redirect:/";
+    return "redirect:/post/" + id;
   }
 }
