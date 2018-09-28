@@ -11,4 +11,6 @@ public interface CommentService {
 
   List<Comment> findAllByPostId(Long id);
 
+  void save(Comment comment);
 }
+
