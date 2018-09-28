@@ -14,18 +14,17 @@
 <body>
 <div class="container">
     <a href="/addpost">Submit new post</a>
-    <p>Posts</p>
-    <div th:if="${posts.size()>0}"></div>
-    <table class="table table-borderless table-striped table-hover">
+    <p>Post</p>
 
-        <tr th:each="post: ${posts}" scope="row">
-            <td><a th:href="@{'/downvote/' + ${post.id}}">-</a></td>
-            <td><a th:href="@{'/upvote/' + ${post.id}}">+</a></td>
-            <td th:text="${post.score}"></td>
-            <td><a th:href="'post/'+${post.id}">[[${post.title}]]</a></td>
-            <!--<td><a th:href="'/delete/'+${post.getId()}" th:text="delete"></a></td>-->
-        </tr>
-    </table>
+    <div class="well">[[${post.title}]]</div>
+
+
+    <h2>Comments</h2>
+
+    <div th:if="${comments.size()>0}">
+
+
+    </div>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"

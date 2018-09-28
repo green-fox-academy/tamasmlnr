@@ -3,10 +3,8 @@ package com.greenfox.reddit.Models;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Post implements Comparable<Post> {
@@ -16,13 +14,24 @@ public class Post implements Comparable<Post> {
   private String content;
   private String title;
   private int score = 0;
+  @OneToMany(cascade = CascadeType.ALL)
+  List<Comment> comments;
 
   public Post(String content, String title) {
     this.content = content;
     this.title = title;
   }
 
+
   public Post() {
+  }
+
+  public List<Comment> getAllComment() {
+    return comments;
+  }
+
+  public void addComment(Comment comment) {
+    comments.add(comment);
   }
 
   public long getId() {
