@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 @Controller
@@ -30,11 +32,11 @@ public class MainController {
 
   @GetMapping("/login")
   public String login() {
-//    try {
-//      colorService.recreateGreenFox();
-//    } catch (IOException e) {
-//      e.printStackTrace();
-//    }
+    try {
+      colorService.recreateGreenFox();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
     return "login";
   }
 

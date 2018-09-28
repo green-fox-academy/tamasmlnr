@@ -2,7 +2,6 @@ package com.greenfox.reddit.Controller;
 
 import com.greenfox.reddit.Models.Post;
 import com.greenfox.reddit.Service.PostService;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class PostController {
 
-  PostService postService;
+  private PostService postService;
 
   @Autowired
   public PostController(PostService postService) {
@@ -41,7 +40,6 @@ public class PostController {
     postService.downvoteById(id);
     return "redirect:/";
   }
-
 
   @GetMapping("upvote/{id}")
   public String upnvote(@PathVariable("id") Integer id) {
