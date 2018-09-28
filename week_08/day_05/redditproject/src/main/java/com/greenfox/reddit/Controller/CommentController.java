@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @Controller
 public class CommentController {
 
@@ -32,7 +34,9 @@ public class CommentController {
 
   @PostMapping("/savecomment")
   public String saveComment(@ModelAttribute("newComment") Comment comment, @RequestParam("id") Long id, Model model) {
+    postService.saveComment(comment, id);
     Post post = postService.findById(id);
+    comment.setLocalDateTime(LocalDateTime.now());
     comment.setPost(post);
     commentService.save(comment);
     return "redirect:/post/" + id;

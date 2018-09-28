@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
 @Repository
 public interface ToDoRepository extends CrudRepository<ToDo, Integer> {
   List<ToDo> findAll();

@@ -1,7 +1,6 @@
 package com.greenfox.todolight.Repository;
 
 import com.greenfox.todolight.Model.Assignee;
-import com.greenfox.todolight.Model.ToDo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

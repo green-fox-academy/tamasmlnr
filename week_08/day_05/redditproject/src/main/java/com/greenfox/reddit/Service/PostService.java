@@ -19,5 +19,5 @@ public interface PostService {
 
   Post findById(Long id);
 
-  void addComment(Comment comment);
+  void saveComment(Comment comment, Long id);
 }
