@@ -1,6 +1,7 @@
 package com.greenfox.reddit.Service;
 
 import com.greenfox.reddit.Models.Comment;
+import com.greenfox.reddit.Models.Post;
 import com.greenfox.reddit.Repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,9 @@ public class CommentServiceImpl implements CommentService {
   public List<Comment> findAll() {
     List<Comment> comments = commentRepository.findAll();
     return comments;
+  }
+
+  public List<Comment> findAllByPostId(Long id) {
+    return commentRepository.findAllByPostId(id);
   }
 }

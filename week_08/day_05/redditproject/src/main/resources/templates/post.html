@@ -14,15 +14,27 @@
 <body>
 <div class="container">
     <a href="/addpost">Submit new post</a>
-    <p>Post</p>
+    <h1>[[${post.title}]]</h1>
 
-    <div class="well">[[${post.title}]]</div>
+    <div class="well">[[${post.content}]]</div>
 
 
     <h2>Comments</h2>
 
     <div th:if="${comments.size()>0}">
-
+        <table class="table table-borderless table-striped table-hover">
+            <thead class="table-inverse">
+            <tr>
+                <th width="10%">Author</th>
+                <th width="80%">Comment</th>
+                <th width="10%%">Date</th>
+            </tr>
+            <tr th:each="comment: ${comments}" scope="row">
+                <td th:text="${comment.author}"></td>
+                <td th:text="${comment.content}"></td>
+                <td th:text="${comment.localDateTime}"></td>
+            </tr>
+        </table>
 
     </div>
 
