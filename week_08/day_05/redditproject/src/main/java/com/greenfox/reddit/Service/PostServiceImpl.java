@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -21,6 +22,7 @@ public class PostServiceImpl implements PostService {
   @Override
   public List<Post> findAll() {
     List<Post> posts = postRepository.findAll();
+    Collections.sort(posts);
     return posts;
   }
 
@@ -45,5 +47,12 @@ public class PostServiceImpl implements PostService {
         .orElse(null);
     post.setScore(post.getScore() + +1);
     postRepository.save(post);
+  }
+
+  @Override
+  public Post findById(Long id) {
+    Post post = postRepository.findById(id)
+        .orElse(null);
+    return post;
   }
 }

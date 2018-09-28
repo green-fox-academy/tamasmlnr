@@ -14,4 +14,6 @@ public interface PostService {
   void downvoteById(Integer id);
 
   void upvoteById(Integer id);
+
+  Post findById(Long id);
 }

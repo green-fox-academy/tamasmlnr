@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Post {
+public class Post implements Comparable<Post> {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
@@ -55,5 +55,10 @@ public class Post {
 
   public void setScore(int score) {
     this.score = score;
+  }
+
+  @Override
+  public int compareTo(Post o) {
+    return o.score - this.score;
   }
 }

@@ -47,5 +47,11 @@ public class PostController {
     return "redirect:/";
   }
 
+  @GetMapping("/post/{id}")
+  public String showComment(@PathVariable("id") Long id, Model model) {
+    Post post = postService.findById(id);
+    model.addAttribute("post", post);
+    return "post";
+  }
 
 }
