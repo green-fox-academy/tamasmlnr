@@ -3,9 +3,12 @@ package com.greenfox.reddit.Service;
 import com.greenfox.reddit.Models.Comment;
 import com.greenfox.reddit.Models.Post;
 import com.greenfox.reddit.Repository.PostRepository;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,10 +16,12 @@ import java.util.List;
 public class PostServiceImpl implements PostService {
 
   PostRepository postRepository;
+  CommentService commentService;
 
   @Autowired
-  public PostServiceImpl(PostRepository postRepository) {
+  public PostServiceImpl(CommentService commentService, PostRepository postRepository) {
     this.postRepository = postRepository;
+    this.commentService = commentService;
   }
 
   @Override
@@ -57,7 +62,10 @@ public class PostServiceImpl implements PostService {
   }
 
   @Override
-  public void addComment(Comment comment) {
-
+  public void saveComment(Comment comment, Long id) {
+    Post post = findById(id);
+    comment.setLocalDateTime(LocalDateTime.now());
+    comment.setPost(post);
+    commentService.save(comment);
   }
 }

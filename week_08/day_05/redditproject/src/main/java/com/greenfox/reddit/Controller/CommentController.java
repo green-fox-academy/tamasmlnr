@@ -35,10 +35,6 @@ public class CommentController {
   @PostMapping("/savecomment")
   public String saveComment(@ModelAttribute("newComment") Comment comment, @RequestParam("id") Long id, Model model) {
     postService.saveComment(comment, id);
-    Post post = postService.findById(id);
-    comment.setLocalDateTime(LocalDateTime.now());
-    comment.setPost(post);
-    commentService.save(comment);
     return "redirect:/post/" + id;
   }
 }
