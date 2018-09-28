@@ -14,14 +14,13 @@ public class Post implements Comparable<Post> {
   private String content;
   private String title;
   private int score = 0;
-  @OneToMany(cascade = CascadeType.ALL)
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
   List<Comment> comments;
 
   public Post(String content, String title) {
     this.content = content;
     this.title = title;
   }
-
 
   public Post() {
   }
