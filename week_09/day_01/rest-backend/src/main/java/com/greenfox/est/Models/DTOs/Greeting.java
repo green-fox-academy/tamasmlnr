@@ -1,20 +1,20 @@
 package com.greenfox.est.Models.DTOs;
 
 public class Greeting {
-  public String welcomeMessage;
+  public String welcome_message;
 
   public Greeting(String name, String title) {
-    this.welcomeMessage = "Oh, hi there " + name + ", my dear " + title + "!";
+    this.welcome_message = "Oh, hi there " + name + ", my dear " + title + "!";
   }
 
   public Greeting() {
   }
 
   public String getWelcomeMessage() {
-    return welcomeMessage;
+    return welcome_message;
   }
 
   public void setWelcomeMessage(String welcomeMessage) {
-    this.welcomeMessage = welcomeMessage;
+    this.welcome_message = welcomeMessage;
   }
 }
