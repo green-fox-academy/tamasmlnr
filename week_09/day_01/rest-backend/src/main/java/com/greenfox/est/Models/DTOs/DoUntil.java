@@ -14,7 +14,7 @@ public class DoUntil {
     }
   }
 
-  public int sum(int number) {
+  public int sum(Integer number) {
     int result = 0;
     for (int i = 0; i <= number; i++) {
       result += i;
@@ -22,7 +22,7 @@ public class DoUntil {
     return result;
   }
 
-  public int factor(int number) {
+  public Integer factor(int number) {
     int result = 1;
     for (int j = 1; j <= number; j++) {
       result *= j;

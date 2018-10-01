@@ -47,4 +47,18 @@ public class RestController {
     return new DoUntil(action, until.getUntil());
   }
 
+  @PostMapping("/arrays")
+  public Object arrays(@RequestBody(required = false) ArrayHandler arrayHandler) {
+    System.out.println(arrayHandler.getWhat());
+    if (arrayHandler == null) {
+      return new ErrorClass("Please provide what to do!");
+    }
+    if (arrayHandler.getWhat()
+        .equals("double")) {
+      return new ArrayCalculatorDouble(arrayHandler.getNumbers());
+    }
+    return new ArrayCalculator(arrayHandler.getWhat(), arrayHandler.getNumbers());
+  }
+
+
 }
