@@ -79,9 +79,13 @@ public class RestController {
   }
 
   @GetMapping("/log")
-  public LogsAndLogCount logs(@RequestParam(value = "input", required = false) Integer number) {
+  public LogsAndLogCount logs() {
     return new LogsAndLogCount(logRepository.findAll());
   }
 
+  @PostMapping("/sith")
+  public LogsAndLogCount sith(@RequestBody Until until) {
+    return new LogsAndLogCount(logRepository.findAll());
+  }
 
 }
