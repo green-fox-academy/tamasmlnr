@@ -2,15 +2,28 @@ package com.greenfox.est.Controllers;
 
 
 import com.greenfox.est.Models.DTOs.*;
+import com.greenfox.est.Repositories.LogRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 
+  private LogRepository logRepository;
+
+  @Autowired
+  public RestController(LogRepository logRepository) {
+    this.logRepository = logRepository;
+  }
+
   @GetMapping("/doubling")
   public Object doubling(@RequestParam(value = "input", required = false) Integer number) {
+    logRepository.save(new Log(LocalDateTime.now(), "/doubling", number.toString()));
     if (number != null) {
       return new Doubling(number);
     }
@@ -20,6 +33,7 @@ public class RestController {
   @GetMapping("/greeter")
   public Object greet(@RequestParam(value = "name", required = false) String name,
                       @RequestParam(value = "title", required = false) String title) {
+    logRepository.save(new Log(LocalDateTime.now(), "/greeter", "name" + "," + "title"));
     if (name == null) {
       return new ErrorClass("Please provide a name!");
     }
@@ -31,6 +45,8 @@ public class RestController {
 
   @GetMapping("/appenda/{appendable}")
   public ResponseEntity<?> doubling(@PathVariable(value = "appendable", required = false) String appendable) {
+    logRepository.save(new Log(LocalDateTime.now(), "/appendable", appendable));
+
     if (appendable != null) {
       return ResponseEntity.status(HttpStatus.OK)
           .body(new Append(appendable));
@@ -41,6 +57,8 @@ public class RestController {
 
   @PostMapping("/dountil/{action}")
   public Object dountil(@PathVariable(value = "action", required = false) String action, @RequestBody(required = false) Until until) {
+    logRepository.save(new Log(LocalDateTime.now(), "/dountil", action + "" + until.getUntil()
+        .toString()));
     if (until == null) {
       return new ErrorClass("Please provide a number!");
     }
@@ -49,7 +67,7 @@ public class RestController {
 
   @PostMapping("/arrays")
   public Object arrays(@RequestBody(required = false) ArrayHandler arrayHandler) {
-    System.out.println(arrayHandler.getWhat());
+    logRepository.save(new Log(LocalDateTime.now(), "/arrays", arrayHandler.getWhat()));
     if (arrayHandler == null) {
       return new ErrorClass("Please provide what to do!");
     }
@@ -58,6 +76,11 @@ public class RestController {
       return new ArrayCalculatorDouble(arrayHandler.getNumbers());
     }
     return new ArrayCalculator(arrayHandler.getWhat(), arrayHandler.getNumbers());
+  }
+
+  @GetMapping("/log")
+  public LogsAndLogCount logs(@RequestParam(value = "input", required = false) Integer number) {
+    return new LogsAndLogCount(logRepository.findAll());
   }
 
 

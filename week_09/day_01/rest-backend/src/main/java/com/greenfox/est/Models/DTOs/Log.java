@@ -1,9 +1,17 @@
 package com.greenfox.est.Models.DTOs;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
+@Entity
 public class Log {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private int id;
   private LocalDateTime createdAt;
   private String endpoint;
   private String data;
@@ -12,9 +20,11 @@ public class Log {
     this.createdAt = createdAt;
     this.endpoint = endpoint;
     this.data = data;
+    LogsAndLogCount.entryCount++;
   }
 
   public Log() {
+    LogsAndLogCount.entryCount++;
   }
 
   public LocalDateTime getCreatedAt() {
@@ -39,5 +49,13 @@ public class Log {
 
   public void setData(String data) {
     this.data = data;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 }
