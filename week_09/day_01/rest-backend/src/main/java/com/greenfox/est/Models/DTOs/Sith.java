@@ -10,7 +10,6 @@ public class Sith {
     this.sithText = sithize(text);
   }
 
-
   public String sithize(String text) {
     String[] randomwords = new String[]{" Uhmm.", " Arrrgh.", " Mhm."};
     String result = "";
