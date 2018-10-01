@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
@@ -84,8 +83,8 @@ public class RestController {
   }
 
   @PostMapping("/sith")
-  public LogsAndLogCount sith(@RequestBody Until until) {
-    return new LogsAndLogCount(logRepository.findAll());
+  public Sith sith(@RequestBody Text text) {
+    return new Sith(text.getText());
   }
 
 }

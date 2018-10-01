@@ -2,20 +2,20 @@ package com.greenfox.est.Models.DTOs;
 
 public class Text {
 
-  private String string;
+  private String text;
 
   public Text(String string) {
-    this.string = string;
+    this.text = string;
   }
 
   public Text() {
   }
 
-  public String getString() {
-    return string;
+  public String getText() {
+    return text;
   }
 
-  public void setString(String string) {
-    this.string = string;
+  public void setText(String text) {
+    this.text = text;
   }
 }
