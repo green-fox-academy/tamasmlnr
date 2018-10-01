@@ -1,16 +1,10 @@
 package com.greenfox.est.Controllers;
 
 
-import com.greenfox.est.Models.DTOs.Append;
-import com.greenfox.est.Models.DTOs.Doubling;
-import com.greenfox.est.Models.DTOs.ErrorClass;
-import com.greenfox.est.Models.DTOs.Greeting;
+import com.greenfox.est.Models.DTOs.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
@@ -43,6 +37,14 @@ public class RestController {
     }
     return ResponseEntity.status(HttpStatus.NOT_FOUND)
         .build();
+  }
+
+  @PostMapping("/dountil/{action}")
+  public Object dountil(@PathVariable(value = "action", required = false) String action, @RequestBody(required = false) Until until) {
+    if (until == null) {
+      return new ErrorClass("Please provide a number!");
+    }
+    return new DoUntil(action, until.getUntil());
   }
 
 }
