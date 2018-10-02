@@ -86,7 +86,7 @@ public class GuardianController {
     }
     mixtapeService.changeRating(mixtapeService.findSong(author, title), newrating);
     return ResponseEntity.status(HttpStatus.OK)
-        .body("Success!");
+        .body(mixtapeService.findSong(author, title));
     //for testing:
     //http://localhost:8080/awesome/changerating?author=David Bowie&title=Starman&newrating=10
   }

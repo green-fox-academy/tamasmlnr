@@ -43,8 +43,9 @@ public class MixtapeServiceImpl implements MixtapeService {
   }
 
   @Override
-  public void changeRating(Song song, Double newrating) {
+  public Song changeRating(Song song, Double newrating) {
     song.setRating(newrating);
+    return song;
   }
 
   @Override

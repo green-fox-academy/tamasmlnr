@@ -15,7 +15,7 @@ public interface MixtapeService {
 
   void delete(Song song);
 
-  void changeRating(Song song, Double newrating);
+  Song changeRating(Song song, Double newrating);
 
   List<Song> findTop(Integer top);
 }

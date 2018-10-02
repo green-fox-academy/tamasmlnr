@@ -83,5 +83,23 @@ public class AwesomeMixTests {
         .andDo(print());
   }
 
+  @Test
+  public void testChangeRating() throws Exception {
+
+    List<Song> songs = new ArrayList<>();
+    songs.add(new Song("David Bowie", "Starman", "pop", 1968, 5.0));
+    Song song=new Song("David Bowie", "Starman", "pop", 1968, 10.0);
+
+
+    when(mixtapeService.changeRating(song,10.0)).thenReturn(song);
+    when(mixtapeService.findSong("David Bowie", "Starman")).thenReturn(song);
+
+    mockMvc.perform(post("/awesome/changerating?author=David Bowie&title=Starman&newrating=10"))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(contentType))
+        .andExpect(jsonPath("$.rating", is(10.0)))
+        .andDo(print());
+  }
+
 
 }
