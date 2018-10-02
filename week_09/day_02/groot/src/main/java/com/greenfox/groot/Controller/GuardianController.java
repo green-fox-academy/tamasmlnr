@@ -91,5 +91,10 @@ public class GuardianController {
     //http://localhost:8080/awesome/changerating?author=David Bowie&title=Starman&newrating=10
   }
 
+  @GetMapping("/awesome/top/{top}")
+  public ResponseEntity<?> topTracks(@PathVariable Integer top) {
+    return ResponseEntity.status(HttpStatus.OK)
+        .body(mixtapeService.findTop(top));
+  }
 
 }

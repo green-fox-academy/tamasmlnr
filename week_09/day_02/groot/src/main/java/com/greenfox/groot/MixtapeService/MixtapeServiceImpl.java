@@ -5,6 +5,7 @@ import com.greenfox.groot.Models.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -44,5 +45,12 @@ public class MixtapeServiceImpl implements MixtapeService {
   @Override
   public void changeRating(Song song, Double newrating) {
     song.setRating(newrating);
+  }
+
+  @Override
+  public List<Song> findTop(Integer top) {
+    List<Song> songs = mixtape.getSongs();
+    Collections.sort(songs);
+    return songs.subList(0, top);
   }
 }

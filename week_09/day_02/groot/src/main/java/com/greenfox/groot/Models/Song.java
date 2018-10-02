@@ -1,6 +1,6 @@
 package com.greenfox.groot.Models;
 
-public class Song {
+public class Song implements Comparable<Song> {
   private String author;
   private String title;
   private String genre;
@@ -54,4 +54,14 @@ public class Song {
   public void setRating(double rating) {
     this.rating = rating;
   }
+
+  @Override
+  public int compareTo(Song o) {
+    if (this.rating > o.rating)
+      return -1;
+    else if (o.rating > this.rating)
+      return 1;
+    return 0;
+  }
 }
+
