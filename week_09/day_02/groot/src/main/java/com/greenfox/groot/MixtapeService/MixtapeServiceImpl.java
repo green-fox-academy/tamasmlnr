@@ -20,9 +20,10 @@ public class MixtapeServiceImpl implements MixtapeService {
   }
 
   @Override
-  public void addSong(Song song) {
+  public Song addSong(Song song) {
     mixtape.getSongs()
         .add(song);
+    return song;
   }
 
   @Override

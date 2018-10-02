@@ -85,19 +85,31 @@ public class AwesomeMixTests {
 
   @Test
   public void testChangeRating() throws Exception {
-
-    List<Song> songs = new ArrayList<>();
-    songs.add(new Song("David Bowie", "Starman", "pop", 1968, 5.0));
-    Song song=new Song("David Bowie", "Starman", "pop", 1968, 10.0);
+    Song song = new Song("David Bowie", "Starman", "pop", 1968, 10.0);
 
 
-    when(mixtapeService.changeRating(song,10.0)).thenReturn(song);
+    when(mixtapeService.changeRating(song, 10.0)).thenReturn(song);
     when(mixtapeService.findSong("David Bowie", "Starman")).thenReturn(song);
 
     mockMvc.perform(post("/awesome/changerating?author=David Bowie&title=Starman&newrating=10"))
         .andExpect(status().isOk())
         .andExpect(content().contentType(contentType))
         .andExpect(jsonPath("$.rating", is(10.0)))
+        .andDo(print());
+  }
+
+  @Test
+  public void testAddSong() throws Exception {
+    List<Song> songs = new ArrayList<>();
+    songs.add(new Song("Blue Swede", "Hooked on a Feeling", "pop", 1968, 10.0));
+    songs.add(new Song("Blue Swede", "Hooked on a Feeling", "pop", 1968, 10.0));
+    
+    when(mixtapeService.findAllSongs()).thenReturn(songs);
+
+    mockMvc.perform(put("/awesome/add?author=Test&title=Test&genre=test&year=1990&rating=9.8"))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(contentType))
+        .andExpect(jsonPath("$.size()", is(2)))
         .andDo(print());
   }
 

@@ -9,7 +9,7 @@ import java.util.List;
 public interface MixtapeService {
   List<Song> findAllSongs();
 
-  void addSong(Song song);
+  Song addSong(Song song);
 
   Song findSong(String author, String title);
 

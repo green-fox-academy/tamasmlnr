@@ -56,7 +56,7 @@ public class GuardianController {
     }
     mixtapeService.addSong(new Song(author, title, genre, year, rating));
     return ResponseEntity.status(HttpStatus.OK)
-        .body("Success!");
+        .body(mixtapeService.findAllSongs());
     //for testing:
     //http://localhost:8080/awesome/add?author=Test&title=Test&genre=test&year=1990&rating=9.8
   }
@@ -86,7 +86,7 @@ public class GuardianController {
     }
     mixtapeService.changeRating(mixtapeService.findSong(author, title), newrating);
     return ResponseEntity.status(HttpStatus.OK)
-        .body(mixtapeService.findSong(author, title));
+        .body(mixtapeService.findAllSongs());
     //for testing:
     //http://localhost:8080/awesome/changerating?author=David Bowie&title=Starman&newrating=10
   }
