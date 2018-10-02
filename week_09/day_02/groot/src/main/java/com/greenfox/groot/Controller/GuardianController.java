@@ -22,6 +22,4 @@ public class GuardianController {
     return ResponseEntity.status(HttpStatus.OK)
         .body(new GrootReply(message, "I am groot!"));
   }
-
-
 }
