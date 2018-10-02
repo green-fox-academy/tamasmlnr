@@ -40,4 +40,9 @@ public class MixtapeServiceImpl implements MixtapeService {
     mixtape.getSongs()
         .remove(song);
   }
+
+  @Override
+  public void changeRating(Song song, Double newrating) {
+    song.setRating(newrating);
+  }
 }

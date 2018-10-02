@@ -78,18 +78,17 @@ public class GuardianController {
 
   @PostMapping("/awesome/changerating")
   public ResponseEntity<?> awesomeMixAddSong(@RequestParam(value = "author", required = false) String author,
-                                             @RequestParam(value = "newrating", required = false) Double newrating,
-                                             @RequestParam(value = "title", required = false) String title) {
+                                             @RequestParam(value = "title", required = false) String title,
+                                             @RequestParam(value = "newrating", required = false) Double newrating) {
     if (author.equals(null) || title.equals(null)) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
           .body(new ErrorMessage("Missing parameters!"));
     }
-    mixtapeService.delete(mixtapeService.findSong(author, title));
-    System.out.println(mixtapeService.findSong(author, title));
+    mixtapeService.changeRating(mixtapeService.findSong(author, title), newrating);
     return ResponseEntity.status(HttpStatus.OK)
         .body("Success!");
     //for testing:
-    //http://localhost:8080/awesome/remove?author=Test&title=test
+    //http://localhost:8080/awesome/changerating?author=David Bowie&title=Starman&newrating=10
   }
 
 

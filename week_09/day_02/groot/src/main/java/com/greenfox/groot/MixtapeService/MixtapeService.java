@@ -14,4 +14,6 @@ public interface MixtapeService {
   Song findSong(String author, String title);
 
   void delete(Song song);
+
+  void changeRating(Song song, Double newrating);
 }
