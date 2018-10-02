@@ -10,4 +10,8 @@ public interface MixtapeService {
   List<Song> findAllSongs();
 
   void addSong(Song song);
+
+  Song findSong(String author, String title);
+
+  void delete(Song song);
 }

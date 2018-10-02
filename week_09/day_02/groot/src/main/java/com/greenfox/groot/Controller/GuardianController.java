@@ -61,5 +61,36 @@ public class GuardianController {
     //http://localhost:8080/awesome/add?author=Test&title=Test&genre=test&year=1990&rating=9.8
   }
 
+  @DeleteMapping("/awesome/remove")
+  public ResponseEntity<?> awesomeMixAddSong(@RequestParam(value = "author", required = false) String author,
+                                             @RequestParam(value = "title", required = false) String title) {
+    if (author.equals(null) || title.equals(null)) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body(new ErrorMessage("Missing parameters!"));
+    }
+    mixtapeService.delete(mixtapeService.findSong(author, title));
+    System.out.println(mixtapeService.findSong(author, title));
+    return ResponseEntity.status(HttpStatus.OK)
+        .body("Success!");
+    //for testing:
+    //http://localhost:8080/awesome/remove?author=Test&title=test
+  }
+
+  @PostMapping("/awesome/changerating")
+  public ResponseEntity<?> awesomeMixAddSong(@RequestParam(value = "author", required = false) String author,
+                                             @RequestParam(value = "newrating", required = false) Double newrating,
+                                             @RequestParam(value = "title", required = false) String title) {
+    if (author.equals(null) || title.equals(null)) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body(new ErrorMessage("Missing parameters!"));
+    }
+    mixtapeService.delete(mixtapeService.findSong(author, title));
+    System.out.println(mixtapeService.findSong(author, title));
+    return ResponseEntity.status(HttpStatus.OK)
+        .body("Success!");
+    //for testing:
+    //http://localhost:8080/awesome/remove?author=Test&title=test
+  }
+
 
 }

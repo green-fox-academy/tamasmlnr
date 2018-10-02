@@ -23,4 +23,21 @@ public class MixtapeServiceImpl implements MixtapeService {
     mixtape.getSongs()
         .add(song);
   }
+
+  @Override
+  public Song findSong(String author, String title) {
+    List<Song> songs = findAllSongs();
+    for (Song song : songs) {
+      if (song.getAuthor()
+          .equals(author) && song.getTitle()
+          .equals(title)) return song;
+    }
+    return null;
+  }
+
+  @Override
+  public void delete(Song song) {
+    mixtape.getSongs()
+        .remove(song);
+  }
 }
