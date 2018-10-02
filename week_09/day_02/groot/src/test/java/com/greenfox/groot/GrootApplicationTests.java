@@ -45,4 +45,17 @@ public class GrootApplicationTests {
         .andExpect(jsonPath("$.translated", is(iamgroot)))
         .andDo(print());
   }
+
+  @Test
+  public void testWhenParamaterIsNotGiven() throws Exception {
+    String iamgroot = "I am Groot!";
+
+    mockMvc.perform(get("/groot"))
+        .andExpect(status().isBadRequest())
+        .andExpect(content().contentType(contentType))
+        .andExpect(jsonPath("$.error", is(iamgroot)))
+        .andDo(print());
+  }
+
+
 }
