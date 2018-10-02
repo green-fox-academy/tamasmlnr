@@ -34,7 +34,7 @@ public class GrootApplicationTests {
       Charset.forName("utf8"));
 
   @Test
-  public void testWhenParamaterIsGiven() throws Exception {
+  public void testGrootWhenParamaterIsGiven() throws Exception {
     String message = "somemessage";
     String iamgroot = "I am groot!";
 
@@ -47,7 +47,7 @@ public class GrootApplicationTests {
   }
 
   @Test
-  public void testWhenParamaterIsNotGiven() throws Exception {
+  public void testGrootWhenParamaterIsNotGiven() throws Exception {
     String iamgroot = "I am Groot!";
 
     mockMvc.perform(get("/groot"))
