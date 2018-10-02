@@ -57,5 +57,30 @@ public class GrootApplicationTests {
         .andDo(print());
   }
 
+  @Test
+  public void testYonduWhenParamaterIsGiven() throws Exception {
+    Double distance = 100.0;
+    Double time = 10.0;
+
+    mockMvc.perform(get("/yondu?distance=" + distance + "&time=" + time))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(contentType))
+        .andExpect(jsonPath("$.distance", is(distance)))
+        .andExpect(jsonPath("$.time", is(time)))
+        .andExpect(jsonPath("$.speed", is(distance / time)))
+        .andDo(print());
+  }
+
+  @Test
+  public void testYonduWhenParamaterIsNotGiven() throws Exception {
+
+
+    mockMvc.perform(get("/yondu"))
+        .andExpect(status().isBadRequest())
+        .andExpect(content().contentType(contentType))
+        .andExpect(jsonPath("$.error", is("Missing parameters!")))
+        .andDo(print());
+  }
+
 
 }
