@@ -1,5 +1,7 @@
 package com.greenfox.reddit.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -12,6 +14,7 @@ public class Comment {
   private String content;
   private LocalDateTime localDateTime;
 
+  @JsonIgnore
   @ManyToOne
   private Post post;
 

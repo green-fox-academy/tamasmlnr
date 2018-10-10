@@ -2,11 +2,13 @@ package com.greenfox.reddit.Service;
 
 import com.greenfox.reddit.Models.Comment;
 import com.greenfox.reddit.Models.Post;
+import com.greenfox.reddit.Models.PostDTO;
 import com.greenfox.reddit.Repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -65,5 +67,11 @@ public class PostServiceImpl implements PostService {
     comment.setLocalDateTime(LocalDateTime.now());
     comment.setPost(post);
     commentService.save(comment);
+  }
+
+  @Override
+  public PostDTO listAllPosts() {
+    List<Post> posts = findAll();
+    return new PostDTO(posts);
   }
 }
