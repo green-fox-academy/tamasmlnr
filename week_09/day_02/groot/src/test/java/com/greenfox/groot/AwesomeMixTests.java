@@ -103,7 +103,7 @@ public class AwesomeMixTests {
     List<Song> songs = new ArrayList<>();
     songs.add(new Song("Blue Swede", "Hooked on a Feeling", "pop", 1968, 10.0));
     songs.add(new Song("Blue Swede", "Hooked on a Feeling", "pop", 1968, 10.0));
-    
+
     when(mixtapeService.findAllSongs()).thenReturn(songs);
 
     mockMvc.perform(put("/awesome/add?author=Test&title=Test&genre=test&year=1990&rating=9.8"))
