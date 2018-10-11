@@ -14,7 +14,7 @@
 <body>
 <div class="container">
     <img src="/reddit.png" class="img-fluid">
-    <a href="/reddit/addpost">Submit new post</a>
+    <a href="addpost">Submit new post</a>
     <p>Posts</p>
     <div th:if="${posts.size()>0}"></div>
     <table class="table table-borderless table-striped table-hover">
@@ -24,7 +24,6 @@
             <th width="5%">Upvote</th>
             <th width="5%">Score</th>
             <th>Content</th>
-            <th>Submitted by</th>
         </tr>
         <tr th:each="post: ${posts}" scope="row">
             <td><a th:href="@{'downvote/' + ${post.id}}">-</a></td>
