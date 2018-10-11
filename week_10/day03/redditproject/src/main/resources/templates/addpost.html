@@ -7,7 +7,7 @@
 <body>
 
 Add new post
-<form action="#" th:action="@{/savepost}" th:object="${newPost}" method="post">
+<form action="#" th:action="@{/reddit/savepost}" th:object="${newPost}" method="post">
     <input type="text" name="title"/>
     <input type="text" name="content"/>
     <input type="submit" value="Submit"/>
