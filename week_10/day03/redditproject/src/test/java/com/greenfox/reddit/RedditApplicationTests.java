@@ -66,9 +66,23 @@ public class RedditApplicationTests {
         .andExpect(status().isUnauthorized());
   }
 
+  @Test
+  @WithMockUser(username = "admin", password = "password")
+  public void existentUserCanGetTokenAndAuthentication() throws Exception {
+
+    List<Post> posts = new ArrayList<>();
+    posts.add(new Post("Test", "Test"));
+    PostDTO dto = new PostDTO(posts);
+    when(postService.listAllPosts()).thenReturn(dto);
+
+    mockMvc.perform(get("/api/allposts"))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(contentType))
+        .andDo(print());
+  }
+
 
   @Test
-
   public void getUnauthorizedIfPostingWithoutAccess() throws Exception {
     String newPost = "{\"content\":\"Hello\",\n" +
         "\"title\":\"This is sent with a token\"\n" +
@@ -98,22 +112,6 @@ public class RedditApplicationTests {
         .andExpect(status().isOk());
   }
 
-
-  //
-  @Test
-  @WithMockUser(username = "admin", password = "password")
-  public void existentUserCanGetTokenAndAuthentication() throws Exception {
-
-    List<Post> posts = new ArrayList<>();
-    posts.add(new Post("Test", "Test"));
-    PostDTO dto = new PostDTO(posts);
-    when(postService.listAllPosts()).thenReturn(dto);
-
-    mockMvc.perform(get("/api/allposts"))
-        .andExpect(status().isOk())
-        .andExpect(content().contentType(contentType))
-        .andDo(print());
-  }
 
 }
 
