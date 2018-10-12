@@ -1,25 +1,19 @@
 package com.greenfox.reddit;
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.greenfox.reddit.Controller.PostAPIController;
 import com.greenfox.reddit.Models.Post;
 import com.greenfox.reddit.Models.PostDTO;
 import com.greenfox.reddit.Service.PostService;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -27,7 +21,6 @@ import java.util.List;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -36,25 +29,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(PostAPIController.class)
 public class RedditApplicationTests {
-  @Autowired
-  private WebApplicationContext webApplicationContext;
 
   @Autowired
   private MockMvc mockMvc;
 
-  @Before
-  public void setUp() throws Exception {
-    mockMvc = MockMvcBuilders
-        .webAppContextSetup(webApplicationContext)
-        .apply(springSecurity())
-        .build();
-  }
-
-
   @MockBean
   private PostService postService;
-
-  private BCryptPasswordEncoder bCryptPasswordEncoder;
 
   private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
       MediaType.APPLICATION_JSON.getSubtype(),
@@ -81,7 +61,6 @@ public class RedditApplicationTests {
         .andDo(print());
   }
 
-
   @Test
   public void getUnauthorizedIfPostingWithoutAccess() throws Exception {
     String newPost = "{\"content\":\"Hello\",\n" +
@@ -95,7 +74,6 @@ public class RedditApplicationTests {
         .accept(contentType))
         .andExpect(status().isUnauthorized());
   }
-
 
   @Test
   @WithMockUser(username = "admin", password = "password")
@@ -112,6 +90,16 @@ public class RedditApplicationTests {
         .andExpect(status().isOk());
   }
 
+  @Test
+  @WithMockUser(username = "admin", password = "password")
+  public void emptyPostResultsBadRequest() throws Exception {
+    mockMvc.perform(MockMvcRequestBuilders.post("/api/newpost")
+        .with(csrf())
+        .header("Content-Type", "application/json")
+        .content("")
+        .accept(contentType))
+        .andExpect(status().isBadRequest());
+  }
 
 }
 
