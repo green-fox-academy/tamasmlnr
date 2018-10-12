@@ -36,5 +36,10 @@ public class PostAPIController {
     postService.savePost(post);
   }
 
+  @PostMapping("/api/multiplepost")
+  private void addMultiplePosts(@RequestBody PostDTO postDTO) {
+    postService.savePostsFromDTO(postDTO);
+  }
+
 
 }

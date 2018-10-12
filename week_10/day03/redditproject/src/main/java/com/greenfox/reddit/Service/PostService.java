@@ -22,4 +22,6 @@ public interface PostService {
   void saveComment(Comment comment, Long id);
 
   PostDTO listAllPosts();
+
+  void savePostsFromDTO(PostDTO postDTO);
 }

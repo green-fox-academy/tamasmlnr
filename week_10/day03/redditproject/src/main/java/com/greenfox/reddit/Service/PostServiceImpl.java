@@ -74,4 +74,9 @@ public class PostServiceImpl implements PostService {
     List<Post> posts = findAll();
     return new PostDTO(posts);
   }
+
+  @Override
+  public void savePostsFromDTO(PostDTO postDTO) {
+    postRepository.saveAll(postDTO.getPosts());
+  }
 }
