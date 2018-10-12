@@ -1,45 +1,55 @@
 package com.greenfox.reddit;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.greenfox.reddit.Controller.PostAPIController;
 import com.greenfox.reddit.Models.Post;
 import com.greenfox.reddit.Models.PostDTO;
 import com.greenfox.reddit.Service.PostService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(PostAPIController.class)
 public class RedditApplicationTests {
+  @Autowired
+  private WebApplicationContext webApplicationContext;
 
   @Autowired
   private MockMvc mockMvc;
+
+  @Before
+  public void setUp() throws Exception {
+    mockMvc = MockMvcBuilders
+        .webAppContextSetup(webApplicationContext)
+        .apply(springSecurity())
+        .build();
+  }
+
 
   @MockBean
   private PostService postService;
@@ -58,13 +68,38 @@ public class RedditApplicationTests {
 
 
   @Test
-  public void getUnauthorizedErrorwithoutUserWhenPosting() throws Exception {
-    mockMvc.perform(post("/api/allposts"))
-        .andExpect(status().isForbidden());
+
+  public void getUnauthorizedIfPostingWithoutAccess() throws Exception {
+    String newPost = "{\"content\":\"Hello\",\n" +
+        "\"title\":\"This is sent with a token\"\n" +
+        "}";
+
+    mockMvc.perform(MockMvcRequestBuilders.post("/api/newpost")
+        .with(csrf())
+        .header("Content-Type", "application/json")
+        .content(newPost)
+        .accept(contentType))
+        .andExpect(status().isUnauthorized());
   }
 
 
+  @Test
+  @WithMockUser(username = "admin", password = "password")
+  public void ableToPostWithAuthenticatedUser() throws Exception {
+    String newPost = "{\"content\":\"Hello\",\n" +
+        "\"title\":\"This is sent with a token\"\n" +
+        "}";
 
+    mockMvc.perform(MockMvcRequestBuilders.post("/api/newpost")
+        .with(csrf())
+        .header("Content-Type", "application/json")
+        .content(newPost)
+        .accept(contentType))
+        .andExpect(status().isOk());
+  }
+
+
+  //
   @Test
   @WithMockUser(username = "admin", password = "password")
   public void existentUserCanGetTokenAndAuthentication() throws Exception {
@@ -79,10 +114,6 @@ public class RedditApplicationTests {
         .andExpect(content().contentType(contentType))
         .andDo(print());
   }
-
-
-
-
 
 }
 
