@@ -38,18 +38,23 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         .csrf()
         .disable()
         .authorizeRequests()
+        .antMatchers("/addpost").authenticated()
         .antMatchers("/api/**")
         .authenticated()
         .anyRequest()
+        .permitAll()
+        .and()			.formLogin()
+        .loginPage("/login")
+        .permitAll()
+        .and()
+        .logout()
+        .logoutSuccessUrl("/login?logout")
         .permitAll()
         .and()
         .addFilter(new JWTAuthenticationFilter(authenticationManager()))
         .addFilter(new JWTAuthorizationFilter(authenticationManager()))
         .sessionManagement()
-        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and()
-        .csrf()
-        .disable();
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     http.exceptionHandling()
         .authenticationEntryPoint(new MyAuthenticationEntryPoint());
   }
