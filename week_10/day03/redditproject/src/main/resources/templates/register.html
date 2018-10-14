@@ -12,30 +12,16 @@
 
 
 <body>
-
-<br>
 <div class="container">
-    <div class="float-right"><a href="/logout">Log out</a></div>
-    <img src="/reddit.png" class="img-fluid">
-    <a href="addpost">Submit new post</a>
-    <p>Posts</p>
-    <div th:if="${posts.size()>0}"></div>
-    <table class="table table-borderless table-striped table-hover">
-        <thead class="table-inverse">
-        <tr>
-            <th width="5%">Downvote</th>
-            <th width="5%">Upvote</th>
-            <th width="5%">Score</th>
-            <th>Content</th>
-        </tr>
-        <tr th:each="post: ${posts}" scope="row">
-            <td><a th:href="@{'downvote/' + ${post.id}}">-</a></td>
-            <td><a th:href="@{'upvote/' + ${post.id}}">+</a></td>
-            <td th:text="${post.score}"></td>
-            <td><a th:href="'post/'+${post.id}">[[${post.title}]]</a></td>
-            <!--<td><a th:href="'/delete/'+${post.getId()}" th:text="delete"></a></td>-->
-        </tr>
-    </table>
+    <div class="container">
+        <form class="form-signin" th:action="@{/register}" method="post">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <input class="form-control" type="text" required name="username" placeholder="Username">
+                <input class="form-control" type="password" required name="password" placeholder="Password">
+                <label class="checkbox"></label>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+    </div>
 </div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
