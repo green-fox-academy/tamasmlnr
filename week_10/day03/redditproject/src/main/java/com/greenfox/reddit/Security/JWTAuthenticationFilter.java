@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
@@ -27,26 +28,44 @@ import static com.greenfox.reddit.Security.SecurityConstants.TOKEN_PREFIX;
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
   private AuthenticationManager authenticationManager;
 
+
+
   public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
     this.authenticationManager = authenticationManager;
+    setFilterProcessesUrl("/api/login");
   }
 
   @Override
   public Authentication attemptAuthentication(HttpServletRequest req,
                                               HttpServletResponse res) throws AuthenticationException {
-    try {
-      ApplicationUser creds = new ObjectMapper()
-          .readValue(req.getInputStream(), ApplicationUser.class);
 
-      return authenticationManager.authenticate(
-          new UsernamePasswordAuthenticationToken(
-              creds.getUsername(),
-              creds.getPassword(),
-              new ArrayList<>())
-      );
-    } catch (IOException e) {
-      throw new RuntimeException(e);
+
+
+    if ("application/json".equals(req.getHeader("content-type"))) {
+
+
+      try {
+        ApplicationUser creds = new ObjectMapper()
+            .readValue(req.getInputStream(), ApplicationUser.class);
+
+        return authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(
+                creds.getUsername(),
+                creds.getPassword(),
+                new ArrayList<>())
+        );
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    } else {
+      return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+          req.getParameter("username"),
+          req.getParameter("password"),
+          Collections.emptyList()));
+
     }
+
+
   }
 
   @Override
